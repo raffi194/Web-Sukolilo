@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+:root {
+    --ff-accent: "Roboto";
+
+    --extra-bold: 700;
+    --bold: 600;
+    --regular: 500;
+
+    --size-large: 3.75 rem;
+    --size-medium: 2.125 rem;
+    --size-medium-small: 1.25 rem;
+    --size-small: 1 rem;
+    --size-very-small: 0.875 rem;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src:
+        url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Manjari:wght@100;400;700&family=Marko+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+}
