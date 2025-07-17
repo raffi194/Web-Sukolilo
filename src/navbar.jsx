@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import logo from './assets/img/Logo sukolilo.png';
 
 const Navbar = () => {
     return (
@@ -8,17 +9,28 @@ const Navbar = () => {
             <nav className="bg-gray-800 p-4">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="text-white text-lg font-bold">
-                        <img src="src/assets/Logo Robotiik (1).png" alt="Sukolilo Logo" className="h-8 inline-block mr-2" />
+                        <div className="flex items-center">
+                            <img src={logo} alt="Logo" className="h-8 mr-2" />
+                        </div>
                     </div>
                     <ul className="flex space-x-4">
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Home</a>
+                            <a href="#" className="text-gray-300 hover:text-white">Beranda</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">About</a>
+                            <a href="#" className="text-gray-300 hover:text-white">Layanan</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Contact</a>
+                            <a href="#" className="text-gray-300 hover:text-white">Profil</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-gray-300 hover:text-white">Usaha Desa</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-gray-300 hover:text-white">Perangkat Desa</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-gray-300 hover:text-white">Kontak</a>
                         </li>
                     </ul>
                 </div>
