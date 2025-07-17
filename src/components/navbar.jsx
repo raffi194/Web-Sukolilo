@@ -1,7 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import logo from './assets/img/Logo sukolilo.png';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import logo from '../assets/img/Logo_sukolilo.png';
 
 const Navbar = () => {
     return (
