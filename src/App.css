@@ -1,4 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/assets/fonts/Roboto_Condensed-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ExtraLightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-LightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ThinItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-BlackItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-Bold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraBold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraLightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ThinItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-BlackItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Black.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-ExtraBold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Italic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-LightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@theme {
+    --font-inter: 'Roboto', sans-serif;
+}
+
 @import "tailwindcss";
 
 :root {
