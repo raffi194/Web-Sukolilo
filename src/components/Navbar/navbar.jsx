@@ -4,26 +4,26 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Navbar = () => {
     return (
-        <div>
-            <nav className="bg-gray-800 p-4">
+        <>
+            <nav className="bg-white-800 p-4">
                 <div className="container mx-auto flex justify-between items-center">
-                    <div className="text-white text-lg font-bold">
-                        <img src="src/assets/Logo Robotiik (1).png" alt="Sukolilo Logo" className="h-8 inline-block mr-2" />
+                    <div className="text-black text-lg font-bold">
+                        <img src="src/assets/logo kabupaten.png" alt="Sukolilo Logo" className="h-8 inline-block mr-2" />
                     </div>
                     <ul className="flex space-x-4">
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Home</a>
+                            <a href="#" className="text-gray-900 hover:text-white">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">About</a>
+                            <a href="#" className="text-gray-900 hover:text-white">About</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Contact</a>
+                            <a href="#" className="text-gray-900 hover:text-white">Contact</a>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </div>
+        </>
     );
 }
 
