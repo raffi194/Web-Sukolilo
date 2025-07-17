@@ -6,31 +6,31 @@ import logo from '../assets/img/Logo_sukolilo.png';
 const Navbar = () => {
     return (
         <div>
-            <nav className="bg-gray-800 p-4">
+            <nav className="bg-white text-black p-4">
                 <div className="container mx-auto flex justify-between items-center">
-                    <div className="text-white text-lg font-bold">
+                    <div className="text-black text-lg font-bold">
                         <div className="flex items-center">
                             <img src={logo} alt="Logo" className="h-8 mr-2" />
                         </div>
                     </div>
-                    <ul className="flex space-x-4">
+                    <ul className="flex space-x-5">
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Beranda</a>
+                            <a href="#" className="hover:text-gray-500">Beranda</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Layanan</a>
+                            <a href="#" className="hover:text-gray-500">Layanan</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Profil</a>
+                            <a href="#" className="hover:text-gray-500">Profil Desa</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Usaha Desa</a>
+                            <a href="#" className="hover:text-gray-500">Usaha Desa</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Perangkat Desa</a>
+                            <a href="#" className="hover:text-gray-500">Perangkat Desa</a>
                         </li>
                         <li>
-                            <a href="#" className="text-gray-300 hover:text-white">Kontak</a>
+                            <a href="#" className="hover:text-gray-500">Kontak</a>
                         </li>
                     </ul>
                 </div>
