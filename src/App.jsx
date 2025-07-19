@@ -1,19 +1,25 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
 import Navbar from "./components/navbar.jsx";
 import Hero from "./components/Hero.jsx";
+import Beranda from "./pages/Beranda.jsx";
+import Profil from "./pages/Profil.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <BrowserRouter>
       <div>
         <Navbar />
-        <Hero title1="Selamat Datang di" title2="Website Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
+        <Routes>
+          <Route path="/" exact component={Beranda} />
+          <Route path="/profil" component={Profil} />
+        </Routes>
       </div>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
