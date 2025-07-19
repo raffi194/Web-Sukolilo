@@ -40,6 +40,7 @@
 
     --size-large: 3.75rem;
     --size-medium: 2.125rem;
+    --size-medium-large: 2rem;
     --size-medium-small: 1.25rem;
     --size-small: 1rem;
     --size-very-small: 0.875rem;
@@ -82,5 +83,10 @@ h3 {
 
 .desc {
     font-size: var(--size-small);
+    font-weight: var(--bold);
+}
+
+.heading-4-bold {
+    font-size: var(--size-medium-large);
     font-weight: var(--bold);
 }

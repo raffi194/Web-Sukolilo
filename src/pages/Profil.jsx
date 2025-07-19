@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Hero from "../components/Hero.jsx";
-import LongCard from '../components/VisiMisi.jsx';
-import SejarahDesa from '../components/SejarahDesa.jsx';
+import LongCard from '../components/Profil/VisiMisi.jsx';
+import SejarahDesa from '../components/Profil/SejarahDesa.jsx';
 
 const Profil = () => {
     return (
