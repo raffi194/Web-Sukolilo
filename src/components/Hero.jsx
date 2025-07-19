@@ -1,19 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Hero = () => {
+const Hero = ({ title1, title2, description }) => {
     return (
         <div className='text-center py-10'>
-            <h1 className='font'>Selamat Datang di <br />Website Desa Sukolilo</h1>
-            <p className='desc-hero pt-4'>Melayani dengan Hati bersama Membangun Masyarakat Sejahtera</p>
+            <h1 className='text-4xl font-bold'>{title1} <br />{title2}</h1>
+            <p className='desc-hero pt-4'>{description}</p>
         </div>
-
     );
 };
 
-
 Hero.propTypes = {
-
+    title1: PropTypes.string.isRequired,
+    title2: PropTypes.string.isRequired,
+    description: PropTypes.string,
 };
-
 
 export default Hero;
