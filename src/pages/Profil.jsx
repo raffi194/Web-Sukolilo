@@ -10,10 +10,4 @@ const Profil = () => {
     );
 };
 
-Profil.propTypes = {
-    title1: PropTypes.string.isRequired,
-    title2: PropTypes.string.isRequired,
-    description: PropTypes.string,
-};
-
 export default Profil;

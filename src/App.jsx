@@ -14,9 +14,10 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" exact component={Beranda} />
-          <Route path="/profil" component={Profil} />
+          <Route path="/" element={<Beranda />} />
+          <Route path="/profil" element={<Profil />} />
         </Routes>
+
       </div>
     </BrowserRouter>
   );
