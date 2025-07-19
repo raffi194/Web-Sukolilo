@@ -11,16 +11,16 @@ const Timeline = () => {
         {
             id: 2,
             year: "Tahun 2000",
-            description: "Your second timeline description here..."
+            description: "Lorem ipsum dolor sit amet consectetur. Integer eu sollicitudin neque sem fermentum consectetur eget leo orci. Risus luctus id bibendum tortor habitant et turpis sit. Sit et cras morbi a diam accumsan eget. Scelerisque interdum in ut sed morbi varius eros. Id id diam nascetur egestas enim ultricies in viverra id. Sem facilisis risus non pulvinar sit. Sit quam dolor sed amet facilisi dui montes massa erat. Urna justo gravida ipsum donec gravida suspendisse luctus. Sed faucibus vestibulum nisl consectetur aliquet sed lacus ut ut."
         },
         // Add more timeline items as needed
     ];
 
     return (
-        <div className="grid grid-cols-[1fr_3fr_3fr_2fr] grid-rows-1 relative pt-5">
+        <div className="grid grid-cols-[1fr_3fr_3fr_2fr] grid-rows-1 relative pt-5 gap-x-10">
             {/* Garis Timeline */}
             <div
-                className="h-2 bg-blue-400 z-0 rounded-full self-center ml-[20%]"
+                className="h-2 bg-blue-400 z-0 rounded-full self-center ml-[18%]"
                 style={{ gridColumn: "2 / 5", gridRow: "1" }}
             ></div>
 
