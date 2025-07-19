@@ -31,10 +31,6 @@
     src: url('../src/assets/fonts/Roboto-Regular.ttf') format('truetype');
 }
 
-@theme {
-    --font-inter: 'Roboto', sans-serif;
-}
-
 :root {
     --ff-accent: ['Roboto', 'sans-serif'];
 
@@ -47,10 +43,19 @@
     --size-medium-small: 1.25rem;
     --size-small: 1rem;
     --size-very-small: 0.875rem;
+
+    --clr-section-text: #11141D;
+
+    --clr-primary-1: #EEF8FF;
+    --clr-primary-2: #BBE4FF;
+    --clr-primary-3: #56BCFF;
+    --clr-primary-4: #2F9CFF;
+    --clr-primary-5: #0F78F7;
 }
 
 body {
     font-family: var(--ff-accent);
+    font-weight: var(--regular);
     color: #11141D;
 }
 
@@ -60,7 +65,22 @@ h1 {
     line-height: 70px;
 }
 
+h2 {
+    font-size: var(--size-medium);
+    font-weight: var(--extra-bold);
+}
+
+h3 {
+    font-size: var(--size-small);
+    font-weight: var(--extra-bold);
+}
+
 .desc-hero {
     font-size: var(--size-medium-small);
+    font-weight: var(--bold);
+}
+
+.desc {
+    font-size: var(--size-small);
     font-weight: var(--bold);
 }

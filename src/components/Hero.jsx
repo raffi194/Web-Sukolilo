@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Hero = ({ title1, title2, description }) => {
     return (
-        <div className='text-center py-10'>
+        <div className='text-center py-10 mb-50'>
             <h1 className='text-4xl font-bold'>{title1} <br />{title2}</h1>
             <p className='desc-hero pt-4'>{description}</p>
         </div>
