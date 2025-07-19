@@ -15,7 +15,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Beranda />} />
-          <Route path="/profil" element={<Profil />} />
+          <Route path="/profil-desa" element={<Profil />} />
+          {/* <Route path="/layanan" element={<Layanan />} />
+          <Route path="/usaha-desa" element={<UsahaDesa />} />
+          <Route path="/perangkat-desa" element={<PerangkatDesa />} />
+          <Route path="/kontak" element={<Kontak />} /> */}
         </Routes>
 
       </div>

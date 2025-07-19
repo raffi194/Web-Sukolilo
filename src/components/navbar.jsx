@@ -1,7 +1,6 @@
 import React from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import logo from '../assets/img/Logo_sukolilo.png';
+import Navigation from './Navigation';
 
 const Navbar = () => {
     return (
@@ -14,29 +13,17 @@ const Navbar = () => {
                         </div>
                     </div>
                     <ul className="flex space-x-5">
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Layanan</a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Profil Desa</a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Usaha Desa</a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Perangkat Desa</a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-gray-500">Kontak</a>
-                        </li>
+                        <li><Navigation linkTo="/" text="Beranda" /></li>
+                        <li><Navigation linkTo="/layanan" text="Layanan" /></li>
+                        <li><Navigation linkTo="/profil-desa" text="Profil Desa" /></li>
+                        <li><Navigation linkTo="/usaha-desa" text="Usaha Desa" /></li>
+                        <li><Navigation linkTo="/perangkat-desa" text="Perangkat Desa" /></li>
+                        <li><Navigation linkTo="/kontak" text="Kontak" /></li>
                     </ul>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
-}
+};
 
 export default Navbar;

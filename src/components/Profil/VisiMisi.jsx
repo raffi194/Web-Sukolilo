@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
-const LongCard = () => {
+const VisiMisi = () => {
     return (
         <div className='flex flex-col gap-10'>
             <div className='bg-white shadow-lg border-l-5 border-[#2F9CFF] px-5 mx-8 pt-6 pb-10 gap-1 flex flex-col items-start'>
@@ -22,4 +22,4 @@ const LongCard = () => {
     );
 };
 
-export default LongCard;
+export default VisiMisi;
