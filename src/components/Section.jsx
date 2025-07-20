@@ -10,7 +10,7 @@ const Section = ({ title, description, bgColor, children, padBot }) => {
             }}
         >
             <h2>{title}</h2>
-            <p className='desc'>{description}</p>
+            <p className='desc px-70'>{description}</p>
             <div>{children}</div>
         </div>
     );
