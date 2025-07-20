@@ -54,6 +54,40 @@
     --clr-primary-5: #0F78F7;
 }
 
+::-webkit-scrollbar {
+    height: 8px;
+    /* untuk scroll horizontal */
+    width: 8px;
+    /* untuk scroll vertical (opsional) */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* atau pakai warna abu2 */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2F9CFF;
+    /* warna biru muda */
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1e80d9;
+    /* hover effect */
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #c6e4ff transparent;
+}
+
+.scrollbar-custom {
+    scrollbar-gutter: stable both-edges;
+}
+
 body {
     font-family: var(--ff-accent);
     font-weight: var(--regular);

@@ -4,7 +4,7 @@ import Navigation from './Navigation';
 
 const Navbar = () => {
     return (
-        <div className='px-10 py-6 top-0 w-full z-50'>
+        <div className='px-10 py-6 top-0 w-full z-50 sticky bg-white'>
             <nav className="text-black">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="text-black text-lg font-bold">
