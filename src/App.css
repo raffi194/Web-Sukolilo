@@ -124,3 +124,8 @@ h3 {
     font-size: var(--size-medium-large);
     font-weight: var(--bold);
 }
+
+.body-2-semibold {
+    font-size: var(--size-medium-small);
+    font-weight: var(--bold);
+}
