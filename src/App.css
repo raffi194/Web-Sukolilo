@@ -46,6 +46,8 @@
     /* 32px */
     --size-medium-small: 1.25rem;
     /* 20px */
+    --size-small-medium: 1.125rem;
+    /* 18px */
     --size-small: 1rem;
     /* 16px */
     --size-very-small: 0.875rem;
@@ -125,6 +127,13 @@ h3 {
 }
 
 /* Description Styles */
+
+.body-3-semibold {
+    font-size: var(--size-small-medium);
+    /* 18px */
+    font-weight: var(--bold);
+    /* 600 */
+}
 
 .desc-hero {
     font-size: var(--size-medium-small);
