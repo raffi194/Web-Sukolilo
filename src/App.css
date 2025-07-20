@@ -39,11 +39,17 @@
     --regular: 500;
 
     --size-large: 3.75rem;
+    /* 60px */
     --size-medium: 2.125rem;
+    /* 34px */
     --size-medium-large: 2rem;
+    /* 32px */
     --size-medium-small: 1.25rem;
+    /* 20px */
     --size-small: 1rem;
+    /* 16px */
     --size-very-small: 0.875rem;
+    /* 14px */
 
     --clr-section-text: #11141D;
 
@@ -94,38 +100,66 @@ body {
     color: #11141D;
 }
 
+/* Heading Styles */
+
 h1 {
     font-size: var(--size-large);
+    /* 60px */
     font-weight: var(--extra-bold);
+    /* 700 */
     line-height: 70px;
 }
 
 h2 {
     font-size: var(--size-medium);
+    /* 34px */
     font-weight: var(--extra-bold);
+    /* 700 */
 }
 
 h3 {
     font-size: var(--size-small);
+    /* 16px */
     font-weight: var(--extra-bold);
+    /* 700 */
 }
+
+/* Description Styles */
 
 .desc-hero {
     font-size: var(--size-medium-small);
+    /* 20px */
     font-weight: var(--bold);
+    /* 600 */
 }
 
+/* Body 4/Semibold */
 .desc {
     font-size: var(--size-small);
+    /* 16px */
     font-weight: var(--bold);
+    /* 600 */
 }
+
+.body-4-semibold {
+    font-size: var(--size-small);
+    /* 16px */
+    font-weight: var(--extra-bold);
+    /* 600 */
+}
+
+/* Other Custom Text Styles */
 
 .heading-4-bold {
     font-size: var(--size-medium-large);
+    /* 32px */
     font-weight: var(--bold);
+    /* 600 */
 }
 
 .body-2-semibold {
     font-size: var(--size-medium-small);
-    font-weight: var(--bold);
+    /* 20px */
+    font-weight: var(--extra-bold);
+    /* 700 */
 }
