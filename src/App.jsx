@@ -5,6 +5,7 @@ import Navbar from "./components/navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import Beranda from "./pages/Beranda.jsx";
 import Profil from "./pages/Profil.jsx";
+import Usaha from "./pages/Usaha.jsx";
 import Footer from './components/footer.jsx';
 import Usaha from "./pages/Usaha.jsx";
 
