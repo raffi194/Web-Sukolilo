@@ -5,6 +5,7 @@ import Navbar from "./components/navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import Beranda from "./pages/Beranda.jsx";
 import Profil from "./pages/Profil.jsx";
+import Footer from './components/footer.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,7 +22,7 @@ function App() {
           <Route path="/perangkat-desa" element={<PerangkatDesa />} />
           <Route path="/kontak" element={<Kontak />} /> */}
         </Routes>
-
+        <Footer />
       </div>
     </BrowserRouter>
   );
