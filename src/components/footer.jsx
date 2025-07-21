@@ -17,7 +17,7 @@ const Footer = () => {
                 <div className='flex-start'>
                   <img src={logo} alt="Logo" className="h-16 mb-4" />
                 </div>
-                <div className="flex auto justify-between items-center min-w-[1032px]">
+                <div className="flex items-start justify-between items-center min-w-[1032px]">
                   <div className='flex-start flex-col'>
                     <p style={{fontSize:"var(--size-medium-small)"}} className="font-semibold pb-4">Pemerintah Desa Sukolilo</p>
                     <p style={{fontSize:"var(--size-small)"}} className="font-normal">
