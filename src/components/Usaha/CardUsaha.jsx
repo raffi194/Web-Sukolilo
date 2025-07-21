@@ -1,10 +1,10 @@
 import { faMap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../Button";
+import ButtonUsaha from "./ButtonUsaha";
 
 const CardUsaha = ({ image, title, description, address, linkTo, contact }) => {
     return (
-        <div className="min-w-[280px] max-w-[268px] min-h-[300px] max-h-[491px] flex flex-col bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow">
+        <div className="min-w-[280px] max-w-[268px] min-h-[300px] max-h-auto flex flex-col bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow">
 
             <img src={image} className="object-cover" alt={title} />
             <div className="p-5 pt-2 text-left">
@@ -23,7 +23,7 @@ const CardUsaha = ({ image, title, description, address, linkTo, contact }) => {
                 </div>
             </div>
             <div className="">
-                <Button />
+                <ButtonUsaha text="Hubungi Sekarang" />
             </div>
 
         </div>

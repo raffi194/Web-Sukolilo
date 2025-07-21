@@ -49,7 +49,11 @@ const Usaha = () => {
 
                 <div className="flex flex-row justify-center items-center pt-5 gap-x-5">
                     {categories.map((category) => (
-                        <Button key={category.id} text={category.category} onClick={() => alert(`Kategori ${category.category} diklik!`)} />
+                        <Button
+                            key={category.id}
+                            text={category.category}
+                            onClick={() => alert(`Kategori ${category.category} diklik!`)}
+                        />
                     ))}
                 </div>
 
