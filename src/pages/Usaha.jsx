@@ -53,7 +53,7 @@ const Usaha = () => {
             <Section title="Katalog Usaha Desa Sukolilo"
                 description="Selamat datang di bagian Pembuatan Surat website Desa Krisik! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa.">
 
-                <div className="flex flex-row justify-center items-center pt-5 gap-x-5">
+                <div className="flex flex-wrap justify-center items-center pt-5 gap-5">
                     {categories.map((category) => (
                         <Button
                             key={category.id}
