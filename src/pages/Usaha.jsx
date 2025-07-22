@@ -1,9 +1,15 @@
+import React from "react";
 import Hero from "../components/Hero";
 import Section from "../components/Section";
 import Button from "../components/Button";
 import CardUsaha from "../components/Usaha/CardUsaha.jsx";
+import CustomPagination from '../components/CustomPagination.jsx';
 
 const Usaha = () => {
+    const [page, setPage] = React.useState(1);
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
     const categories = [
         {
@@ -115,6 +121,10 @@ const Usaha = () => {
                         address="JL. Pegangsaan Timur No.65 Jakarta"
                         linkTo="#"
                     />
+                </div>
+                <div className="flex self-center justify-center">
+                    <CustomPagination />
+
                 </div>
 
             </Section>
