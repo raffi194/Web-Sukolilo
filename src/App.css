@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/assets/fonts/Roboto_Condensed-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ExtraLightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-LightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_Condensed-ThinItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-BlackItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-Bold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraBold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ExtraLightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto_SemiCondensed-ThinItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-BlackItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Black.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-ExtraBold.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Italic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-LightItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-SemiBoldItalic.ttf') format('truetype');
+    src: url('../src/assets/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+:root {
+    --ff-accent: ['Roboto', 'sans-serif'];
+
+    --extra-bold: 700;
+    --bold: 600;
+    --regular: 500;
+
+    --size-large: 3.75rem;
+    /* 60px */
+    --size-medium: 2.125rem;
+    /* 34px */
+    --size-medium-large: 2rem;
+    /* 32px */
+    --size-medium-small: 1.25rem;
+    /* 20px */
+    --size-small-medium: 1.125rem;
+    /* 18px */
+    --size-small: 1rem;
+    /* 16px */
+    --size-very-small: 0.875rem;
+    /* 14px */
+
+    --clr-section-text: #11141D;
+    --clr-primary-1: #EEF8FF;
+    --clr-primary-2: #BBE4FF;
+    --clr-primary-3: #56BCFF;
+    --clr-primary-4: #2F9CFF;
+    --clr-primary-5: #0F78F7;
+}
+
+::-webkit-scrollbar {
+    height: 8px;
+    /* untuk scroll horizontal */
+    width: 8px;
+    /* untuk scroll vertical (opsional) */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* atau pakai warna abu2 */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2F9CFF;
+    /* warna biru muda */
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1e80d9;
+    /* hover effect */
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #c6e4ff transparent;
+}
+
+.scrollbar-custom {
+    scrollbar-gutter: stable both-edges;
+}
+
+body {
+    font-family: var(--ff-accent);
+    font-weight: var(--regular);
+    color: #11141D;
+}
+
+/* Heading Styles */
+
+h1 {
+    font-size: var(--size-large);
+    /* 60px */
+    font-weight: var(--extra-bold);
+    /* 700 */
+    line-height: 70px;
+}
+
+h2 {
+    font-size: var(--size-medium);
+    /* 34px */
+    font-weight: var(--extra-bold);
+    /* 700 */
+}
+
+h3 {
+    font-size: var(--size-small);
+    /* 16px */
+    font-weight: var(--extra-bold);
+    /* 700 */
+}
+
+/* Description Styles */
+
+.body-3-semibold {
+    font-size: var(--size-small-medium);
+    /* 18px */
+    font-weight: var(--bold);
+    /* 600 */
+}
+
+.desc-hero {
+    font-size: var(--size-medium-small);
+    /* 20px */
+    font-weight: var(--bold);
+    /* 600 */
+}
+
+/* Body 4/Semibold */
+.desc {
+    font-size: var(--size-small);
+    /* 16px */
+    font-weight: var(--bold);
+    /* 600 */
+}
+
+.body-4-semibold {
+    font-size: var(--size-small);
+    /* 16px */
+    font-weight: var(--extra-bold);
+    /* 600 */
+}
+
+/* Other Custom Text Styles */
+
+.heading-4-bold {
+    font-size: var(--size-medium-large);
+    /* 32px */
+    font-weight: var(--bold);
+    /* 600 */
+}
+
+.body-2-semibold {
+    font-size: var(--size-medium-small);
+    /* 20px */
+    font-weight: var(--extra-bold);
+    /* 700 */
+}
