@@ -1,52 +1,134 @@
 import Section from '../Section';
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Plot from 'react-plotly.js';
 
 const JumlahKK = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [animatedData, setAnimatedData] = useState([]);
+
+  // Move data to useMemo to prevent unnecessary recalculations
+  const chartData = useMemo(() => ({
+    years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+    kkCounts: [175, 180, 185, 220, 225, 230, 235, 190, 195, 200, 205, 210, 215]
+  }), []);
+
+  // Intersection Observer setup
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '50px' }
+    );
+
+    const target = document.getElementById('jumlah-kk-chart-container');
+    if (target) observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  // Animation logic
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const { years, kkCounts } = chartData;
+    const initialData = {
+      x: years,
+      y: Array(years.length).fill(0),
+      type: 'bar',
+      marker: { color: '#2F9CFF' },
+      name: 'Jumlah KK'
+    };
+
+    setAnimatedData([initialData]);
+
+    const animate = () => {
+      const increment = 5;
+      const duration = 1000;
+      const steps = Math.max(...kkCounts) / increment;
+      const stepInterval = duration / steps;
+
+      let currentValues = Array(years.length).fill(0);
+
+      const animation = setInterval(() => {
+        const newValues = currentValues.map((val, idx) =>
+          Math.min(val + increment, kkCounts[idx])
+        );
+
+        setAnimatedData([{
+          ...initialData,
+          y: newValues
+        }]);
+
+        currentValues = newValues;
+
+        if (newValues.every((val, idx) => val >= kkCounts[idx])) {
+          clearInterval(animation);
+          setAnimatedData([{
+            ...initialData,
+            y: kkCounts
+          }]);
+        }
+      }, stepInterval);
+
+      return () => clearInterval(animation);
+    };
+
+    return animate();
+  }, [isVisible, chartData]);
+
+  // Memoized layout configuration
+  const chartLayout = useMemo(() => ({
+    autosize: true,
+    margin: { t: 50, r: 50, l: 50, b: 50 },
+    xaxis: {
+      title: 'Tahun',
+      type: 'category',
+      automargin: true,
+      tickangle: -45
+    },
+    yaxis: {
+      title: 'Jumlah KK',
+      gridwidth: 1,
+      rangemode: 'tozero',
+      automargin: true
+    },
+    paper_bgcolor: '#EEF8FF',
+    plot_bgcolor: '#EEF8FF',
+    hovermode: 'closest'
+  }), []);
+
+  const chartConfig = {
+    responsive: true,
+    displayModeBar: false,
+    scrollZoom: false
+  };
+
   return (
     <Section
-      title={"Jumlah Kepala Keluarga"}
-      description={"Perkembangan jumlah kepala keluarga di Desa Sukolilo dari tahun ke tahun"}
+      title="Jumlah Kepala Keluarga"
+      description="Perkembangan jumlah kepala keluarga di Desa Sukolilo dari tahun ke tahun"
       padBot="2rem"
     >
-      <div className='pt-10'>
-        <Plot
-          data={[
-            {
-              x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
-              y: [175, 180, 185, 220, 225, 230, 235, 190, 195, 200, 205, 210, 215],
-              type: 'scatter',
-              mode: 'lines+markers',
-              marker: {
-                color: '#2F9CFF',
-                size: 8
-              },
-              line: {
-                width: 3
-              },
-              name: 'Jumlah KK'
-            }
-          ]}
-          layout={{
-            width: 1000,
-            height: 500,
-            margin: { t: 50, r: 50, l: 50, b: 50 },
-            xaxis: {
-              title: 'Tahun',
-              gridwidth: 1
-            },
-            yaxis: {
-              title: 'Jumlah KK',
-              gridwidth: 1
-            },
-            paper_bgcolor: '#EEF8FF',
-            plot_bgcolor: '#EEF8FF'
-          }}
-          config={{
-            responsive: true,
-            displayModeBar: false
-          }}
-        />
+      <div
+        id="jumlah-kk-chart-container"
+        className={`pt-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+      >
+        {isVisible && animatedData.length > 0 ? (
+          <Plot
+            data={animatedData}
+            layout={chartLayout}
+            config={chartConfig}
+            className="w-full h-[500px] lg:h-[600px]"
+          />
+        ) : (
+          <div className="w-full h-[500px] lg:h-[600px] bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="text-gray-500 animate-pulse">Memuat data chart...</div>
+          </div>
+        )}
       </div>
     </Section>
   );

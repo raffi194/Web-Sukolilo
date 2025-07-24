@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 
@@ -15,22 +15,13 @@ const LongArrowRight = () => (
     </svg>
 );
 
-const CustomPagination = ({ count = 10, defaultPage = 1, onChange }) => {
-    const [page, setPage] = useState(defaultPage);
-
-    const handleChange = (event, value) => {
-        setPage(value);
-        if (onChange) {
-            onChange(event, value);
-        }
-    };
-
+const CustomPagination = ({ count = 10, page = 1, onChange }) => {
     return (
         <div className="flex justify-center p-4">
             <Pagination
                 count={count}
                 page={page}
-                onChange={handleChange}
+                onChange={onChange}
                 renderItem={(item) => (
                     <PaginationItem
                         components={{
