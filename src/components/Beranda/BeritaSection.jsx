@@ -101,10 +101,10 @@ const BeritaCard = ({ berita, isActive }) => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl xl:text-5xl font-bold text-[var(--black)]">
-            Berita & Pengumuman
+            Berita dan Pengumuman Desa Sukolilo
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-gray-600 mt-2 text-base md:text-lg max-w-2xl mx-auto">
-            Informasi terkini seputar kegiatan, prestasi, dan perkembangan Desa Sukolilo.
+          <motion.p variants={itemVariants} className="text-gray-600 mt-2 text-base md:text-lg max-w-3xl mx-auto">
+            Update terus kabar terbaru seputar kegiatan, prestasi, dan perkembangan Desa Sukolilo hanya di halaman Berita kami!
           </motion.p>
         </motion.div>
 

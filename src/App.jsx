@@ -8,6 +8,7 @@ import Profil from "./pages/Profil.jsx";
 import Usaha from "./pages/Usaha.jsx";
 import Footer from './components/footer.jsx';
 import Layanan from "./pages/Layanan.jsx";
+import PerangkatDesa from "./pages/PerangkatDesa.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,8 +22,8 @@ function App() {
           <Route path="/profil-desa" element={<Profil />} />
           <Route path="/Layanan" element={<Layanan />} />
           <Route path="/usaha-desa" element={<Usaha />} />
-          {/* <Route path="/perangkat-desa" element={<PerangkatDesa />} />
-          <Route path="/kontak" element={<Kontak />} /> */}
+          <Route path="/perangkat-desa" element={<PerangkatDesa />} />
+          {/* <Route path="/kontak" element={<Kontak />} /> */}
         </Routes>
         <Footer />
       </div>
