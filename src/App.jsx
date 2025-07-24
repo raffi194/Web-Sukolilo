@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import ScrollToTop from './components/ScrollToTop.jsx';
 import Navbar from "./components/navbar.jsx";
-import Hero from "./components/Hero.jsx";
 import Beranda from "./pages/Beranda.jsx";
 import Profil from "./pages/Profil.jsx";
 import Usaha from "./pages/Usaha.jsx";
@@ -16,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Beranda />} />
