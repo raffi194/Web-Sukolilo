@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../components/Beranda/Hero";
+import Hero from "../components/Hero";
 import BeritaSection from '../components/Beranda/BeritaSection.jsx';
 import FiturWebsite from "../components/Beranda/FiturWebsite";
 import MottoSection from "../components/Beranda/MottoSection";
