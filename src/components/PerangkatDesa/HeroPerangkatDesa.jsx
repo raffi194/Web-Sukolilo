@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Impor gambar untuk setiap perangkat desa
-import gambarKades from "../../assets/img/image 17.png";
-import gambarSekdes from "../../assets/img/image 17.png";
+import gambarKades from "../../assets/img/kades_sukolilo.png";
+import gambarSekdes from "../../assets/img/sekdes_sukolilo.png";
 
 // Varian animasi
 const containerVariants = {
@@ -22,7 +22,7 @@ const itemVariants = {
 // Data perangkat desa
 const perangkatData = [
   {
-    nama: "Ahmad Subarjo, S.E.",
+    nama: "Andrean Noviandi, S.kom.",
     jabatan: "Kepala Desa",
     gambar: gambarKades,
   },
@@ -64,14 +64,14 @@ const PerangkatDesaSection = () => {
           {perangkatData.map((perangkat, index) => (
             <motion.div
               key={index}
-              className="text-center w-full max-w-sm"
+              className="w-full max-w-sm"
               variants={itemVariants}
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
               {/* Gambar */}
               <div className="relative">
-                <div className="overflow-hidden w-64 h-80 mx-auto">
+                <div className="overflow-hidden w-full h-80 mx-auto">
                   <img
                     src={perangkat.gambar}
                     alt={`Foto ${perangkat.nama}`}
@@ -81,7 +81,7 @@ const PerangkatDesaSection = () => {
               </div>
 
               {/* Nama & Jabatan */}
-              <div className="mt-4">
+              <div className="mt-4 text-left px-2">
                 <h3 className="text-xl font-semibold text-[var(--black)]">
                   {perangkat.nama}
                 </h3>
