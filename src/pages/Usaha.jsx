@@ -4,6 +4,7 @@ import Section from "../components/Section";
 import Button from "../components/Button";
 import CardUsaha from "../components/Usaha/CardUsaha.jsx";
 import CustomPagination from '../components/CustomPagination.jsx';
+import FetchCSVData from "../components/Usaha/FetchCSVData.jsx";
 
 const paginateData = (items, currentPage, itemsPerPage) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -14,26 +15,15 @@ const Usaha = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
 
-    // Sample data untuk demo - ganti dengan data asli Anda
-    const usahaData = [
-        { id: 1, title: "Angkasa Motorcycle Tube 1", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 2, title: "Angkasa Motorcycle Tube 2", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 3, title: "Angkasa Motorcycle Tube 3", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 4, title: "Angkasa Motorcycle Tube 4", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 5, title: "Angkasa Motorcycle Tube 5", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 6, title: "Angkasa Motorcycle Tube 6", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 7, title: "Angkasa Motorcycle Tube 7", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 8, title: "Angkasa Motorcycle Tube 8", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 9, title: "Angkasa Motorcycle Tube 9", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 10, title: "Angkasa Motorcycle Tube 10", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 11, title: "Angkasa Motorcycle Tube 11", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 12, title: "Angkasa Motorcycle Tube 12", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 13, title: "Angkasa Motorcycle Tube 13", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 14, title: "Angkasa Motorcycle Tube 14", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 15, title: "Angkasa Motorcycle Tube 15", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 16, title: "Angkasa Motorcycle Tube 16", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-        { id: 17, title: "Angkasa Motorcycle Tube 17", description: "Melayani Tambal Ban, perbaikan mesin motor, isi gas roda motor.", address: "JL. Pegangsaan Timur No.65 Jakarta" },
-    ];
+    const usahaData = FetchCSVData().map(item => {
+        return {
+            title: item["Nama UMKM"],
+            contact: item["No HP"],
+            address: item["Jalan"],
+            dusun: item["Dusun"],
+            kategori: item["Kategori UMKM"]
+        };
+    });
 
     // Calculate total pages
     const totalPages = Math.ceil(usahaData.length / itemsPerPage);
@@ -105,7 +95,7 @@ const Usaha = () => {
                     ))}
                 </div>
 
-                <div className="py-15 flex flex-wrap justify-center items-start gap-15 mt-10">
+                <div className="pb-15 flex flex-wrap justify-center items-start gap-15 mt-10">
                     {currentItems.map((item) => (
                         <CardUsaha
                             key={item.id}
@@ -113,6 +103,7 @@ const Usaha = () => {
                             title={item.title}
                             description={item.description}
                             address={item.address}
+                            contact={item.contact}
                             linkTo="#"
                         />
                     ))}

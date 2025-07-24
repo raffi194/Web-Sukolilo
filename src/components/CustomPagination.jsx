@@ -44,6 +44,9 @@ const CustomPagination = ({ count = 10, page = 1, onChange }) => {
                     '& .Mui-selected': {
                         backgroundColor: 'rgba(15, 120, 247, 1)',
                         color: 'white',
+                        '&:hover': {
+                            backgroundColor: 'rgba(15, 120, 247, 0.85)',
+                        },
                     },
                     '& .MuiPaginationItem-root:hover': {
                         backgroundColor: '#A6D1FF',
