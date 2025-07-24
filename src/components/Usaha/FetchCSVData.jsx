@@ -3,12 +3,17 @@ import axios from 'axios'; // Import Axios
 
 export default function FetchCSVData() {
     const [csvData, setCsvData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchCSVData();    // Fetch the CSV data when the component mounts
     }, []); // The empty array ensures that this effect runs only once, like componentDidMount
 
     const fetchCSVData = () => {
+        setLoading(true);
+        setError(null);
+
         const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbVNO--eH_F0Ir7skdl1d1Rue9li7gqLdx6v17V2vKXWFlqfvyZ6MbeDTLFh3ExzCc4w7uYFs4mD5A/pub?output=csv'; // Replace with your Google Sheets CSV file URL
 
         axios.get(csvUrl)    // Use Axios to fetch the CSV data
@@ -16,9 +21,12 @@ export default function FetchCSVData() {
                 const parsedCsvData = parseCSV(response.data);        // Parse the CSV data into an array of objects
                 setCsvData(parsedCsvData);        // Set the fetched data in the component's state
                 console.log(parsedCsvData);        // Now you can work with 'csvData' in your component's state.
+                setLoading(false);
             })
             .catch((error) => {
                 console.error('Error fetching CSV data:', error);
+                setError(error.message);
+                setLoading(false);
             });
     }
 
@@ -36,5 +44,6 @@ export default function FetchCSVData() {
         }
         return data;
     }
-    return csvData;
+
+    return { csvData, loading, error };
 }

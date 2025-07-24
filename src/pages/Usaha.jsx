@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Hero from "../components/Hero";
 import Section from "../components/Section";
 import Button from "../components/Button";
 import CardUsaha from "../components/Usaha/CardUsaha.jsx";
 import CustomPagination from '../components/CustomPagination.jsx';
 import FetchCSVData from "../components/Usaha/FetchCSVData.jsx";
+import SkeletonCard from "../components/Usaha/SkeletonCard.jsx";
+import SearchBar from "../components/Usaha/SearchBar.jsx";
 
 const paginateData = (items, currentPage, itemsPerPage) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -14,8 +16,12 @@ const paginateData = (items, currentPage, itemsPerPage) => {
 const Usaha = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
+    const [query, setQuery] = useState('');
 
-    const usahaData = FetchCSVData().map(item => {
+    // Destructure the return value from FetchCSVData
+    const { csvData, loading, error } = FetchCSVData();
+
+    const usahaData = csvData.map(item => {
         return {
             title: item["Nama UMKM"],
             contact: item["No HP"],
@@ -25,11 +31,27 @@ const Usaha = () => {
         };
     });
 
-    // Calculate total pages
-    const totalPages = Math.ceil(usahaData.length / itemsPerPage);
+    // Memoize filtered data
+    const filteredData = useMemo(() => {
+        return usahaData.filter(item =>
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.kategori.toLowerCase().includes(query.toLowerCase()) ||
+            item.dusun.toLowerCase().includes(query.toLowerCase())
+        );
+    }, [usahaData, query]);
 
-    // Get current page items
-    const currentItems = paginateData(usahaData, currentPage, itemsPerPage);
+    // Reset page when search query changes
+    React.useEffect(() => {
+        setCurrentPage(1);
+    }, [query]);
+
+    // Get paginated data from filtered results
+    const currentItems = paginateData(filteredData, currentPage, itemsPerPage);
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+    const handleSearch = (searchValue) => {
+        setQuery(searchValue);
+    };
 
     // Handle page change
     const handlePageChange = (event, value) => {
@@ -76,14 +98,49 @@ const Usaha = () => {
         },
     ];
 
+    // Loading skeleton cards
+    const LoadingCards = () => {
+        return (
+            <>
+                {Array.from({ length: itemsPerPage }).map((_, index) => (
+                    <SkeletonCard key={index} />
+                ))}
+            </>
+        );
+    };
+
+    // Error component
+    const ErrorMessage = () => (
+        <div className="w-full text-center py-10">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
+                <h3 className="text-red-800 font-semibold mb-2">Gagal Memuat Data</h3>
+                <p className="text-red-600 text-sm mb-4">
+                    Terjadi kesalahan saat mengambil data usaha. Silakan coba lagi nanti.
+                </p>
+                <button
+                    onClick={() => window.location.reload()}
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200"
+                >
+                    Coba Lagi
+                </button>
+            </div>
+        </div>
+    );
+
     return (
         <div className='py-10 flex flex-col gap-10'>
             <Hero title1="Usaha Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
             <Section title="Katalog Usaha Desa Sukolilo"
                 data-section="catalog"
-                description="Selamat datang di bagian Pembuatan Surat website Desa Krisik! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa."
+                description="Selamat datang di bagian Pembuatan Surat website Desa Sukolilo! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa."
                 bgColor="var(--clr-primary-1)"
             >
+                <div className="flex justify-center pt-5">
+                    <SearchBar
+                        value={query}
+                        onChange={(e) => handleSearch(e.target.value)}
+                    />
+                </div>
 
                 <div className="flex flex-wrap justify-center items-center pt-5 gap-5">
                     {categories.map((category) => (
@@ -96,27 +153,35 @@ const Usaha = () => {
                 </div>
 
                 <div className="pb-15 flex flex-wrap justify-center items-start gap-15 mt-10">
-                    {currentItems.map((item) => (
-                        <CardUsaha
-                            key={item.id}
-                            image="src/assets/img/bengkel.png"
-                            title={item.title}
-                            description={item.description}
-                            address={item.address}
-                            contact={item.contact}
-                            linkTo="#"
-                        />
-                    ))}
+                    {error ? (
+                        <ErrorMessage />
+                    ) : loading ? (
+                        <LoadingCards />
+                    ) : (
+                        currentItems.map((item, index) => (
+                            <CardUsaha
+                                key={`${item.title}-${index}`}
+                                image="src/assets/img/bengkel.png"
+                                title={item.title}
+                                description={item.description}
+                                address={item.address}
+                                contact={item.contact}
+                                linkTo="#"
+                            />
+                        ))
+                    )}
                 </div>
 
-                <div className="flex self-center justify-center">
-                    <CustomPagination
-                        count={totalPages}
-                        defaultPage={1}
-                        page={currentPage}
-                        onChange={handlePageChange}
-                    />
-                </div>
+                {!loading && !error && usahaData.length > 0 && (
+                    <div className="flex self-center justify-center">
+                        <CustomPagination
+                            count={totalPages}
+                            defaultPage={1}
+                            page={currentPage}
+                            onChange={(_, page) => setCurrentPage(page)}
+                        />
+                    </div>
+                )}
 
             </Section>
 
