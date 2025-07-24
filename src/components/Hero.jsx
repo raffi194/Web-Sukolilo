@@ -1,21 +1,64 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+  import React from 'react';
+  import PropTypes from 'prop-types';
+  import { motion } from 'framer-motion';
 
-const Hero = ({ title1, title2, description, image }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const Hero = ({ title1, description, className, children }) => {
     return (
-        <div className='text-center py-10 mb-50'
-            style={{ backgroundImage: `url(${image})` }}>
-            <h1 className='text-4xl font-bold'>{title1} <br />{title2}</h1>
-            <p className='desc-hero pt-4'>{description}</p>
-        </div>
+      <div className={`min-h-screen bg-white flex items-start justify-center text-center px-4 py-16 sm:py-32 ${className}`}>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[var(--black)]'
+            variants={itemVariants}
+          >
+            {title1}
+          </motion.h1>
+          <motion.p
+            className='desc-hero mt-4 md:mt-6 max-w-md md:max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-gray-700'
+            variants={itemVariants}
+          >
+            {description}
+          </motion.p>
+          
+          {children && (
+                    <motion.div variants={itemVariants}>
+                      {children}
+                    </motion.div>
+                  )}
+        </motion.div>
+      </div>
     );
-};
+  };
 
-Hero.propTypes = {
-    title1: PropTypes.string.isRequired,
-    title2: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    image: PropTypes.string
-};
+  Hero.propTypes = {
+      title1: PropTypes.node.isRequired,
+      description: PropTypes.node,
+      className: PropTypes.string
+  };
 
-export default Hero;
+  export default Hero;

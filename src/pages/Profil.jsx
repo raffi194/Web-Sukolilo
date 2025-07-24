@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hero from "../components/Hero.jsx";
+import Hero from "../components/Hero";
 import VisiMisi from '../components/Profil/VisiMisi.jsx';
 import SejarahDesa from '../components/Profil/SejarahDesa.jsx';
 import BaganDesa from '../components/Profil/BaganDesa.jsx';

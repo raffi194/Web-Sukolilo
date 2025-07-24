@@ -1,28 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/img/Logo_sukolilo.png';
 import Navigation from './Navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const navLinks = [
+    { text: "Beranda", linkTo: "/" },
+    { text: "Layanan", linkTo: "/layanan" },
+    { text: "Profil Desa", linkTo: "/profil-desa" },
+    { text: "Usaha Desa", linkTo: "/usaha-desa" },
+    { text: "Perangkat Desa", linkTo: "/perangkat-desa" },
+    { text: "Kontak", linkTo: "/kontak" },
+];
+
+const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+}
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <div className='px-10 py-6 top-0 w-full z-50 sticky bg-white'>
-            <nav className="text-black">
+        <div className='sticky top-0 w-full z-50 bg-white shadow-md'>
+            <nav className="text-black px-4 sm:px-10 py-4">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="text-black text-lg font-bold">
                         <div className="flex items-center">
                             <img src={logo} alt="Logo" className="h-8 mr-2" />
+                            <span className='hidden sm:inline'>Desa Sukolilo</span>
                         </div>
                     </div>
-                    <ul className="flex space-x-5">
-                        <li><Navigation linkTo="/" text="Beranda" /></li>
-                        <li><Navigation linkTo="/layanan" text="Layanan" /></li>
-                        <li><Navigation linkTo="/profil-desa" text="Profil Desa" /></li>
-                        <li><Navigation linkTo="/usaha-desa" text="Usaha Desa" /></li>
-                        <li><Navigation linkTo="/perangkat-desa" text="Perangkat Desa" /></li>
-                        <li><Navigation linkTo="/kontak" text="Kontak" /></li>
+
+                    <ul className="hidden md:flex items-center space-x-5">
+                        {navLinks.map((link) => (
+                            <li key={link.text}><Navigation linkTo={link.linkTo} text={link.text} /></li>
+                        ))}
                     </ul>
+
+                    <div className="md:hidden">
+                        <button onClick={() => setIsOpen(!isOpen)}>
+                            <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl text-[var(--clr-primary-5)]" />
+                        </button>
+                    </div>
                 </div>
-            </nav >
-        </div >
+            </nav>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="md:hidden bg-white shadow-lg absolute w-full"
+                        variants={mobileMenuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <ul className="flex flex-col items-center py-4 space-y-2">
+                            {navLinks.map((link) => (
+                                <li key={link.text} className="w-full text-center">
+                                    <Navigation 
+                                        linkTo={link.linkTo} 
+                                        text={link.text} 
+                                        isMobile={true}
+                                        onClick={() => setIsOpen(false)}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 };
 
