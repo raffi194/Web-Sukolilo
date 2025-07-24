@@ -59,6 +59,9 @@
     --clr-primary-3: #56BCFF;
     --clr-primary-4: #2F9CFF;
     --clr-primary-5: #0F78F7;
+
+    --white: #FBFDFD;
+    --Black: #191B27;
 }
 
 ::-webkit-scrollbar {
@@ -170,4 +173,15 @@ h3 {
     /* 20px */
     font-weight: var(--extra-bold);
     /* 700 */
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }

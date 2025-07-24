@@ -27,19 +27,22 @@ const rightVariant = {
 
 const MottoSection = () => {
   return (
-    <div className="py-24 px-4 sm:px-6 lg:px-8">
+    <div className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
           
           <motion.div
-            className="md:w-1/2 text-center md:text-left border-r-4 border-[var(--clr-primary-5)] pl-8"
+            className="md:w-1/2 text-center md:text-left border-b-4 md:border-b-0 md:border-r-4 border-[var(--clr-primary-5)] pb-8 md:pb-0 md:pr-8"
             variants={leftVariant}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl font-extrabold text-[var(--black)]">
-              Sukolilo Damai (Dinamis, Agamis, Maju, Aman dan Indah)
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[var(--black)] leading-tight">
+              Sukolilo Damai
+            </h2>
+            <h2 className="text-[var(--black)] mt-2 text-base md:text-lg">
+              (Dinamis, Agamis, Maju, Aman dan Indah)
             </h2>
           </motion.div>
 
@@ -50,7 +53,7 @@ const MottoSection = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <p className="text-lg leading-relaxed text-[var(--black)]">
+            <p className="text-base md:text-lg leading-relaxed text-gray-700">
               Kami menjunjung tinggi semangat melayani dengan sepenuh hati, mengutamakan kebutuhan dan kesejahteraan setiap warga. Setiap langkah kami dilandasi ketulusan dan dedikasi.
             </p>
           </motion.div>
