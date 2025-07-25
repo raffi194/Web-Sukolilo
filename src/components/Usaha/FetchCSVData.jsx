@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'; // Import Axios
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Papa from 'papaparse';
 
 export default function FetchCSVData() {
     const [csvData, setCsvData] = useState([]);
@@ -7,20 +8,35 @@ export default function FetchCSVData() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchCSVData();    // Fetch the CSV data when the component mounts
-    }, []); // The empty array ensures that this effect runs only once, like componentDidMount
+        fetchCSVData();
+    }, []);
 
     const fetchCSVData = () => {
         setLoading(true);
         setError(null);
 
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbVNO--eH_F0Ir7skdl1d1Rue9li7gqLdx6v17V2vKXWFlqfvyZ6MbeDTLFh3ExzCc4w7uYFs4mD5A/pub?output=csv'; // Replace with your Google Sheets CSV file URL
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbVNO--eH_F0Ir7skdl1d1Rue9li7gqLdx6v17V2vKXWFlqfvyZ6MbeDTLFh3ExzCc4w7uYFs4mD5A/pub?output=csv';
 
-        axios.get(csvUrl)    // Use Axios to fetch the CSV data
+        axios.get(csvUrl)
             .then((response) => {
-                const parsedCsvData = parseCSV(response.data);        // Parse the CSV data into an array of objects
-                setCsvData(parsedCsvData);        // Set the fetched data in the component's state
-                console.log(parsedCsvData);        // Now you can work with 'csvData' in your component's state.
+                const parsed = Papa.parse(response.data, {
+                    header: true,
+                    skipEmptyLines: true,
+                });
+
+                // Split kategori jadi array
+                const cleanData = parsed.data.map((row) => {
+                    return {
+                        ...row,
+                        'Kategori UMKM': row['Kategori UMKM']
+                            ?.split(',')
+                            .map((val) => val.trim())
+                            .filter((val) => val.length > 0),
+                    };
+                });
+
+                setCsvData(cleanData);
+                console.log(cleanData);
                 setLoading(false);
             })
             .catch((error) => {
@@ -28,22 +44,7 @@ export default function FetchCSVData() {
                 setError(error.message);
                 setLoading(false);
             });
-    }
-
-    function parseCSV(csvText) {
-        const rows = csvText.split(/\r?\n/);        // Use a regular expression to split the CSV text into rows while handling '\r'
-        const headers = rows[0].split(',');        // Extract headers (assumes the first row is the header row)
-        const data = [];        // Initialize an array to store the parsed data
-        for (let i = 1; i < rows.length; i++) {
-            const rowData = rows[i].split(',');          // Use the regular expression to split the row while handling '\r'
-            const rowObject = {};
-            for (let j = 0; j < headers.length; j++) {
-                rowObject[headers[j]] = rowData[j];
-            }
-            data.push(rowObject);
-        }
-        return data;
-    }
+    };
 
     return { csvData, loading, error };
 }

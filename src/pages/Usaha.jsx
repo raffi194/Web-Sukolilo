@@ -17,6 +17,8 @@ const Usaha = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
     const [query, setQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
 
     // Destructure the return value from FetchCSVData
     const { csvData, loading, error } = FetchCSVData();
@@ -27,18 +29,28 @@ const Usaha = () => {
             contact: item["No HP"],
             address: item["Jalan"],
             dusun: item["Dusun"],
-            kategori: item["Kategori UMKM"]
+            kategori: item["Kategori UMKM"],
+            link: item["LINK GMAPS"]
         };
     });
 
     // Memoize filtered data
     const filteredData = useMemo(() => {
-        return usahaData.filter(item =>
-            item.title.toLowerCase().includes(query.toLowerCase()) ||
-            item.kategori.toLowerCase().includes(query.toLowerCase()) ||
-            item.dusun.toLowerCase().includes(query.toLowerCase())
-        );
-    }, [usahaData, query]);
+        return usahaData.filter(item => {
+            const lowerQuery = query.toLowerCase();
+
+            const matchesQuery =
+                item.title.toLowerCase().includes(lowerQuery) ||
+                item.dusun.toLowerCase().includes(lowerQuery) ||
+                item.kategori.some(kat => kat.toLowerCase().includes(lowerQuery));
+
+            const matchesCategory = selectedCategory
+                ? item.kategori.some(kat => kat.toLowerCase() === selectedCategory.toLowerCase())
+                : true;
+
+            return matchesQuery && matchesCategory;
+        });
+    }, [usahaData, query, selectedCategory]);
 
     // Reset page when search query changes
     React.useEffect(() => {
@@ -147,8 +159,14 @@ const Usaha = () => {
                         <Button
                             key={category.id}
                             text={category.category}
-                            onClick={() => alert(`Kategori ${category.category} diklik!`)}
+                            isActive={selectedCategory === category.category}
+                            onClick={() =>
+                                setSelectedCategory(prev =>
+                                    prev === category.category ? null : category.category
+                                )
+                            }
                         />
+
                     ))}
                 </div>
 
@@ -166,7 +184,8 @@ const Usaha = () => {
                                 description={item.description}
                                 address={item.address}
                                 contact={item.contact}
-                                linkTo="#"
+                                linkTo={item.link}
+                                categories={item.kategori}
                             />
                         ))
                     )}

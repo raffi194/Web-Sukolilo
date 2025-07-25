@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ButtonUsaha from "./ButtonUsaha";
 import PropTypes from 'prop-types';
 
-const CardUsaha = ({ image, title, description, address, linkTo, contact }) => {
+const CardUsaha = ({ image, title, description, address, linkTo, contact, categories }) => {
     return (
         <div
             className="
@@ -50,6 +50,12 @@ const CardUsaha = ({ image, title, description, address, linkTo, contact }) => {
                     <p className="text-gray-600 text-sm line-clamp-2">
                         {description}
                     </p>
+                </div>
+
+                <div className="flex flex-row gap-1">
+                    {categories.map((category, index) => (
+                        <p key={index}>{category}</p>
+                    ))}
                 </div>
 
                 {/* Location */}
@@ -104,7 +110,8 @@ CardUsaha.propTypes = {
     description: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     linkTo: PropTypes.string.isRequired,
-    contact: PropTypes.string
+    contact: PropTypes.string,
+    categories: PropTypes.array.isRequired
 };
 
 export default CardUsaha;
