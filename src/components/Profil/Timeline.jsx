@@ -54,14 +54,14 @@ const Timeline = () => {
                         timelineData.forEach((item, index) => {
                             setTimeout(() => {
                                 setVisibleItems(prev => new Set([...prev, item.id]));
-                            }, 800 + (index * 400)); // Stagger animation by 400ms each
+                            }, 800 + (index * 600)); // Stagger animation by 400ms each
                         });
 
                         return () => clearTimeout(lineTimer);
                     }
                 });
             },
-            { threshold: 0.1 } // Trigger when 10% of the component is visible
+            { threshold: 1 } // Trigger when 10% of the component is visible
         );
 
         if (timelineRef.current) {

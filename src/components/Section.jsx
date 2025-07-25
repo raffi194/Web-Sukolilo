@@ -3,7 +3,7 @@ import React from 'react';
 const Section = ({ title, description, bgColor, children, padBot }) => {
     return (
         <div
-            className='text-center py-10 px-4 sm:px-6 md:px-10 lg:px-20'
+            className='text-center py-10 px-4 sm:px-6'
             style={{
                 backgroundColor: bgColor || "var(--clr-primary-1)",
                 paddingBottom: padBot,

@@ -6,13 +6,11 @@ const JumlahKK = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [animatedData, setAnimatedData] = useState([]);
 
-  // Move data to useMemo to prevent unnecessary recalculations
   const chartData = useMemo(() => ({
     years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
     kkCounts: [175, 180, 185, 220, 225, 230, 235, 190, 195, 200, 205, 210, 215]
   }), []);
 
-  // Intersection Observer setup
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,7 +27,6 @@ const JumlahKK = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Animation logic
   useEffect(() => {
     if (!isVisible) return;
 
@@ -79,20 +76,17 @@ const JumlahKK = () => {
     return animate();
   }, [isVisible, chartData]);
 
-  // Memoized layout configuration
   const chartLayout = useMemo(() => ({
     autosize: true,
-    margin: { t: 50, r: 50, l: 50, b: 50 },
+    margin: { t: 40, r: 30, l: 40, b: 60 },
     xaxis: {
       title: 'Tahun',
       type: 'category',
       automargin: true,
-      tickangle: -45
+      tickangle: window.innerWidth < 640 ? -30 : -45
     },
     yaxis: {
       title: 'Jumlah KK',
-      gridwidth: 1,
-      rangemode: 'tozero',
       automargin: true
     },
     paper_bgcolor: '#EEF8FF',
@@ -118,14 +112,16 @@ const JumlahKK = () => {
           }`}
       >
         {isVisible && animatedData.length > 0 ? (
-          <Plot
-            data={animatedData}
-            layout={chartLayout}
-            config={chartConfig}
-            className="w-full h-[500px] lg:h-[600px]"
-          />
+          <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px]">
+            <Plot
+              data={animatedData}
+              layout={chartLayout}
+              config={chartConfig}
+              className="w-full h-full"
+            />
+          </div>
         ) : (
-          <div className="w-full h-[500px] lg:h-[600px] bg-gray-100 rounded-lg flex items-center justify-center">
+          <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px] bg-gray-100 rounded-lg flex items-center justify-center">
             <div className="text-gray-500 animate-pulse">Memuat data chart...</div>
           </div>
         )}
