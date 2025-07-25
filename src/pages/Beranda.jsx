@@ -4,7 +4,7 @@ import BeritaSection from '../components/Beranda/BeritaSection.jsx';
 import FiturWebsite from "../components/Beranda/FiturWebsite";
 import MottoSection from "../components/Beranda/MottoSection";
 import LayananSurat from "../components/Beranda/LayananSurat";
-// import BatasDesa from "../components/Profil/BatasDesa.jsx";
+import BatasDesa from "../components/Profil/BatasDesa.jsx";
 
 const Beranda = () => {
     return (
@@ -18,7 +18,7 @@ const Beranda = () => {
                 <MottoSection />
                 <BeritaSection />
                 <LayananSurat />
-                {/* <BatasDesa /> */}
+                <BatasDesa />
             </main>
         </>
     );
