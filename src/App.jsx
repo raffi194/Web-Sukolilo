@@ -9,6 +9,7 @@ import Usaha from "./pages/Usaha.jsx";
 import Footer from './components/footer.jsx';
 import Layanan from "./pages/Layanan.jsx";
 import PerangkatDesa from "./pages/PerangkatDesa.jsx";
+import PengaduanSaran from './pages/PengaduanSaran.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
+        <PengaduanSaran />
         <ScrollToTop />
         <Navbar />
         <Routes>
