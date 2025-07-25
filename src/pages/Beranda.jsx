@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-// import BeritaSection from '../components/Beranda/BeritaSection.jsx';
+import BeritaSection from '../components/Beranda/BeritaSection.jsx';
 import FiturWebsite from "../components/Beranda/FiturWebsite";
 import MottoSection from "../components/Beranda/MottoSection";
 import LayananSurat from "../components/Beranda/LayananSurat";
@@ -16,7 +16,7 @@ const Beranda = () => {
             <main>
                 <FiturWebsite />
                 <MottoSection />
-                {/* <BeritaSection /> */}
+                <BeritaSection />
                 <LayananSurat />
                 {/* <BatasDesa /> */}
             </main>

@@ -34,7 +34,7 @@ const beritaData = [
 
 const BeritaCard = ({ berita, isActive }) => {
   return (
-    <div className="flex flex-col md:flex-row bg-white h-full overflow-hidden">
+    <div className="flex flex-col md:flex-row bg-[var(--white)] h-full overflow-hidden ">
       <div className="w-full md:w-2/5 h-56 md:h-full overflow-hidden p-8 rounded-2xl relative">
         <motion.img
           src={berita.gambar}
@@ -51,7 +51,7 @@ const BeritaCard = ({ berita, isActive }) => {
           animate={isActive ? "visible" : "hidden"}
           initial="hidden"
         >
-          <motion.span variants={itemVariants} className="bg-[var(--clr-primary-5)] text-white text-xs font-bold px-3 py-1 rounded self-start">
+          <motion.span variants={itemVariants} className="bg-[var(--clr-primary-5)] text-white text-xs font-bold px-3 py-1 rounded-md self-start">
             {berita.kategori}
           </motion.span>
           <motion.h3 variants={itemVariants} className="text-lg md:text-xl xl:text-2xl font-bold mt-3 text-gray-800">
@@ -91,7 +91,7 @@ const BeritaCard = ({ berita, isActive }) => {
   }, [emblaApi]);
 
   return (
-    <section className="py-16 md:py-20 bg-[var(--clr-primary-1)] mx-10">
+    <section className="py-16 md:py-20 bg-[var(--clr-primary-1)] mx-10 rounded-2xl">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-12"
