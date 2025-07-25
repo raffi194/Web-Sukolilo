@@ -8,6 +8,41 @@ import FetchCSVData from "../components/Usaha/FetchCSVData.jsx";
 import SkeletonCard from "../components/Usaha/SkeletonCard.jsx";
 import SearchBar from "../components/Usaha/SearchBar.jsx";
 
+const CATEGORIES = [
+    {
+        id: 1,
+        category: "Elektronik"
+    },
+    {
+        id: 2,
+        category: "Fashion"
+    },
+    {
+        id: 3,
+        category: "Kuliner"
+    },
+    {
+        id: 4,
+        category: "Kerajinan"
+    },
+    {
+        id: 5,
+        category: "Properti"
+    },
+    {
+        id: 6,
+        category: "Warung/Kios"
+    },
+    {
+        id: 7,
+        category: "Bahan Makanan"
+    },
+    {
+        id: 8,
+        category: "Lainnya"
+    },
+];
+
 const paginateData = (items, currentPage, itemsPerPage) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     return items.slice(startIndex, startIndex + itemsPerPage);
@@ -18,6 +53,7 @@ const Usaha = () => {
     const itemsPerPage = 8;
     const [query, setQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState(null);
+
 
 
     // Destructure the return value from FetchCSVData
@@ -44,13 +80,32 @@ const Usaha = () => {
                 item.dusun.toLowerCase().includes(lowerQuery) ||
                 item.kategori.some(kat => kat.toLowerCase().includes(lowerQuery));
 
-            const matchesCategory = selectedCategory
-                ? item.kategori.some(kat => kat.toLowerCase() === selectedCategory.toLowerCase())
-                : true;
+            const matchesCategory = (() => {
+                if (!selectedCategory) return true;
+
+                // Jika kategori yang dipilih adalah "Lainnya"
+                if (selectedCategory.toLowerCase() === "lainnya") {
+                    // Ambil semua kategori yang sudah didefinisikan dari CATEGORIES (kecuali "Lainnya")
+                    const definedCategories = CATEGORIES
+                        .filter(cat => cat.category.toLowerCase() !== "lainnya")
+                        .map(cat => cat.category.toLowerCase());
+
+                    // Cek apakah item tidak memiliki kategori yang sudah didefinisikan
+                    return !item.kategori.some(kat =>
+                        definedCategories.includes(kat.toLowerCase())
+                    );
+                }
+
+                // Untuk kategori lainnya, cek seperti biasa
+                return item.kategori.some(kat =>
+                    kat.toLowerCase() === selectedCategory.toLowerCase()
+                );
+            })();
 
             return matchesQuery && matchesCategory;
         });
-    }, [usahaData, query, selectedCategory]);
+    }, [usahaData, query, selectedCategory]); // Tidak perlu categories di dependencies
+
 
     // Reset page when search query changes
     React.useEffect(() => {
@@ -75,40 +130,6 @@ const Usaha = () => {
         }
     };
 
-    const categories = [
-        {
-            id: 1,
-            category: "Elektronik"
-        },
-        {
-            id: 2,
-            category: "Fashion"
-        },
-        {
-            id: 3,
-            category: "Kuliner"
-        },
-        {
-            id: 4,
-            category: "Kerajinan"
-        },
-        {
-            id: 5,
-            category: "Properti"
-        },
-        {
-            id: 6,
-            category: "Warung/Kios"
-        },
-        {
-            id: 7,
-            category: "Bahan Makanan"
-        },
-        {
-            id: 8,
-            category: "Lainnya"
-        },
-    ];
 
     // Loading skeleton cards
     const LoadingCards = () => {
@@ -155,7 +176,7 @@ const Usaha = () => {
                 </div>
 
                 <div className="flex flex-wrap justify-center items-center pt-5 gap-5">
-                    {categories.map((category) => (
+                    {CATEGORIES.map((category) => (
                         <Button
                             key={category.id}
                             text={category.category}
@@ -166,11 +187,10 @@ const Usaha = () => {
                                 )
                             }
                         />
-
                     ))}
                 </div>
 
-                <div className="pb-15 flex flex-wrap justify-center items-start gap-15 mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10">
                     {error ? (
                         <ErrorMessage />
                     ) : loading ? (
@@ -179,7 +199,7 @@ const Usaha = () => {
                         currentItems.map((item, index) => (
                             <CardUsaha
                                 key={`${item.title}-${index}`}
-                                image="src/assets/img/bengkel.png"
+                                image="https://drive.google.com/file/d/1P3YN52yJ8eFX1m5eVf34ChccHCRBdhMw/preview"
                                 title={item.title}
                                 description={item.description}
                                 address={item.address}

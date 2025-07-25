@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = ({ value, onChange }) => {
     return (
-        <div className="flex items-center border border-[#2F9CFF] rounded-3xl px-5 py-2 w-full max-w-2xl bg-white">
+        <div className="flex items-center border border-[#2F9CFF] rounded-3xl px-5 py-2 w-full max-w-2xl bg-white sm:mx-20">
             <FontAwesomeIcon icon={faSearch} className='mr-2' />
             <input
                 type="text"
