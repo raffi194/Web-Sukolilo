@@ -2,7 +2,7 @@ import React from 'react';
 
 const SkeletonCard = () => {
     return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 w-full max-w-sm animate-pulse">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 w-full max-w-sm animate-pulse mx-auto">
             {/* Image skeleton */}
             <div className="h-48 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-shimmer"></div>
 

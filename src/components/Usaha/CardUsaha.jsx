@@ -7,22 +7,24 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
     return (
         <div
             className="
-                w-full
-                max-w-xs 
-                flex 
-                flex-col 
-                bg-white 
-                shadow-lg 
-                rounded-xl 
-                overflow-hidden
-                transform
-                transition-all
-                duration-300
-                hover:shadow-2xl
-                hover:-translate-y-1
-                animate-fadeIn
-            "
+        w-full
+        max-w-xs 
+        flex 
+        flex-col 
+        bg-white 
+        shadow-lg 
+        rounded-xl 
+        overflow-hidden
+        transform
+        transition-all
+        duration-300
+        hover:shadow-2xl
+        hover:-translate-y-1
+        animate-fadeIn
+        mx-auto
+    "
         >
+
             {/* Image Container */}
             <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 overflow-hidden">
                 <img
@@ -94,7 +96,8 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
                 </div>
 
                 {/* Button */}
-                <div className="pt-2">
+                <div className="pt-2 flex justify-center">
+
                     <ButtonUsaha
                         text="Hubungi Sekarang"
                         onClick={() => window.open(`https://wa.me/${contact}`, '_blank')}
