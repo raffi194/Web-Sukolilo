@@ -16,6 +16,14 @@ const PembagianWilayah = () => {
             description="Desa Sukolilo terbagi dalam wilayah-wilayah yang tertata rapi. Temukan detailnya untuk mengenal desa lebih dekat"
             bgColor={"#FFFFFF"}
         >
+            <div className="w-full flex justify-center mt-6 px-4">
+                <img
+                    src='src/assets/img/peta.png'
+                    alt="Peta Desa Sukolilo"
+                    className="w-full max-w-[1349px] h-auto rounded-xl shadow-md object-contain"
+                />
+            </div>
+
             <MapView />
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-4 sm:px-6 md:px-10'>
