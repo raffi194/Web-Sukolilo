@@ -45,9 +45,10 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
             {/* Content */}
             <div className="flex-1 p-4 sm:p-5 space-y-3 text-left">
                 <div className="space-y-1.5">
-                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight hover:text-blue-600 transition-colors">
+                    <h3 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold tracking-tight hover:text-blue-600 transition-colors">
                         {title}
                     </h3>
+
                     <div className="flex flex-wrap gap-2 text-gray-600 text-xs sm:text-sm">
                         {categories.map((category, index) => (
                             <span

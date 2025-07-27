@@ -66,7 +66,8 @@ const Usaha = () => {
             address: item["Jalan"],
             dusun: item["Dusun"],
             kategori: item["Kategori UMKM"],
-            link: item["LINK GMAPS"]
+            link: item["LINK GMAPS"],
+            image: item["Upload Foto UMKM"]
         };
     });
 
@@ -199,7 +200,7 @@ const Usaha = () => {
                         currentItems.map((item, index) => (
                             <CardUsaha
                                 key={`${item.title}-${index}`}
-                                image="https://drive.google.com/file/d/1P3YN52yJ8eFX1m5eVf34ChccHCRBdhMw/preview"
+                                image={item.image || "src/assets/img/placeholder usaha.png"}
                                 title={item.title}
                                 description={item.description}
                                 address={item.address}
