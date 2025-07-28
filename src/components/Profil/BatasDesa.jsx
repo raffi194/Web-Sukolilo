@@ -8,6 +8,25 @@ const BatasDesa = () => {
         { judul: "Jumlah Penduduk", isi: "18 Juta Orang" },
     ];
 
+    const batasDesa = [
+        {
+            arah: "Utara",
+            batas: "Desa Kenantren"
+        },
+        {
+            arah: "Selatan",
+            batas: "Desa Suumberpasir dan Desa Pakisjajar, Kecamatan Pakis"
+        },
+        {
+            arah: "Barat",
+            batas: "Desa Bunut Wetan, Kecamatan Pakis"
+        },
+        {
+            arah: "Timur",
+            batas: "Desa Sidomulyo, Kecamatan Jabung"
+        }
+    ]
+
     const mapRef = useRef(null);
     const contentRef = useRef(null);
     const titleRef = useRef(null);
@@ -252,17 +271,18 @@ const BatasDesa = () => {
                             Batas Desa :
                         </p>
                         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-2 sm:px-6 pt-4'>
-                            {["Utara", "Selatan", "Timur", "Barat"].map((arah, i) => (
+                            {batasDesa.map((item, i) => (
                                 <div
                                     key={i}
                                     ref={(el) => directionCardsRef.current[i] = el}
                                     className={`direction-card direction-card-${i + 1} text-left body-4-semibold p-4 bg-gray-50 rounded-lg cursor-pointer scroll-rotate-fade`}
                                 >
-                                    <span className='block font-semibold text-gray-800'>{arah}</span>
-                                    <p className='desc mt-1 text-gray-600'>Desa Kemantren</p>
+                                    <span className='block font-semibold text-gray-800'>{item.arah}</span>
+                                    <p className='desc mt-1 text-gray-600'>{item.batas}</p>
                                 </div>
                             ))}
                         </div>
+
                     </div>
 
                     {/* Data Penduduk & Luas */}
