@@ -1,14 +1,14 @@
 import Section from "../Section";
 import CardTempat from "./CardTempat";
 
-import { faMosque, faSchool, faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faMosque, faUserGraduate, faWarehouse } from "@fortawesome/free-solid-svg-icons";
 
 const dataTempat = [
     {
         title: "4 Posyandu",
         jenis: "Kesehatan",
         description: "Pelayanan kesehatan di Desa Sukolilo menjadi salah satu perhatian utama dalam mendukung kesejahteraan masyarakat.",
-        icon: faBuildingColumns,
+        icon: faWarehouse,
     },
     {
         title: "4 Masjid",
@@ -20,7 +20,7 @@ const dataTempat = [
         title: "21 Pendidikan",
         jenis: "Pendidikan",
         description: "Pendidikan menjadi pondasi penting dalam membangun generasi masa depan yang cerdas dan berdaya saing.",
-        icon: faSchool,
+        icon: faUserGraduate,
     },
 ];
 
@@ -33,7 +33,8 @@ const TempatDiDesa = () => {
             }
             bgColor={"white"}
         >
-            <div className="grid grid-cols-3 gap-8 px-30 py-5">
+            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-20 py-5">
+
                 {dataTempat.map((item, index) => (
                     <CardTempat
                         key={index}
