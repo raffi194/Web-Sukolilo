@@ -224,7 +224,7 @@ const BatasDesa = () => {
                 }
             `}</style>
 
-            <div className='flex flex-col lg:flex-row gap-10 items-center pt-8 lg:pt-16 px-4 md:px-10'>
+            <div className='flex flex-col lg:flex-row gap-10 items-center pt-8 lg:pt-8 px-4 md:px-10 pb-6'>
                 {/* MAP IMAGE */}
                 <div
                     ref={mapRef}

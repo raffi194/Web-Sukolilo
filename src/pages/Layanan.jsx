@@ -2,6 +2,8 @@ import React from 'react';
 import Hero from "../components/Hero";
 import LayananSurat from "../components/Beranda/LayananSurat";
 import KetentuanSurat from '../components/Layanan/KetentuanSurat';
+import TempatDiDesa from '../components/Layanan/TempatDiDesa';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +11,7 @@ const Layanan = () => {
     return (
         <div>
             <Hero
-                title1={<>Layanan Desa Sukolilo</>} 
+                title1={<>Layanan Desa Sukolilo</>}
                 description={<>Melayani dengan Hati bersama Membangun Masyarakat Sejahtera</>}
             >
                 <a
@@ -27,8 +29,9 @@ const Layanan = () => {
                     </div>
                 </a>
             </Hero>
-            <LayananSurat />    
-            <KetentuanSurat />    
+            <LayananSurat />
+            <KetentuanSurat />
+            <TempatDiDesa />
         </div>
     );
 }
