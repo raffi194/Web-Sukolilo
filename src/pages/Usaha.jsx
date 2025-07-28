@@ -176,7 +176,7 @@ const Usaha = () => {
                     />
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center pt-5 gap-5">
+                <div className="flex flex-wrap justify-center items-center pt-5 gap-2 sm:gap-5">
                     {CATEGORIES.map((category) => (
                         <Button
                             key={category.id}

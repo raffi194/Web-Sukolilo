@@ -1,4 +1,4 @@
-import { faMap } from "@fortawesome/free-solid-svg-icons";
+import { faMap } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ButtonUsaha from "./ButtonUsaha";
 import PropTypes from 'prop-types';
@@ -8,12 +8,12 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
         <div
             className="
         w-full
-        max-w-xs 
-        flex 
-        flex-col 
-        bg-white 
-        shadow-lg 
-        rounded-xl 
+        max-w-xs
+        flex
+        flex-col
+        bg-white
+        shadow-lg
+        rounded-xl
         overflow-hidden
         transform
         transition-all
@@ -45,11 +45,11 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
             {/* Content */}
             <div className="flex-1 p-4 sm:p-5 space-y-3 text-left">
                 <div className="space-y-1.5">
-                    <h3 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold tracking-tight hover:text-blue-600 transition-colors">
+                    <p className="text-xl sm:text-xl md:text-xl font-bold tracking-tight hover:text-blue-600 transition-colors">
                         {title}
-                    </h3>
+                    </p>
 
-                    <div className="flex flex-wrap gap-2 text-gray-600 text-xs sm:text-sm">
+                    <div className="flex flex-wrap gap-2 text-gray-600 text-sm sm:text-sm">
                         {categories.map((category, index) => (
                             <span
                                 key={index}
@@ -67,15 +67,14 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
                         icon={faMap}
                         className="
                             mt-1 
-                            text-gray-500 
                             group-hover:text-blue-500 
                             transition-colors
-                            text-lg sm:text-xl
+                            text-xl sm:text-2xl
                             self-center
                         "
                     />
                     <div>
-                        <p className="text-xs sm:text-sm font-medium text-gray-700">
+                        <p className="text-sm sm:text-sm font-semibold text-gray-700">
                             {address}
                         </p>
                         <a
@@ -84,7 +83,7 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
                             rel="noopener noreferrer"
                             className="
                                 text-blue-500 
-                                text-xs sm:text-sm 
+                                text-sm sm:text-xs
                                 font-medium
                                 hover:text-blue-700
                                 transition-colors
@@ -97,7 +96,7 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
                 </div>
 
                 {/* Button */}
-                <div className="pt-2 flex justify-center">
+                <div className="w-full sm:w-auto flex justify-center sm:justify-start">
 
                     <ButtonUsaha
                         text="Hubungi Sekarang"

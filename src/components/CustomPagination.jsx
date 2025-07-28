@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 // SVG Custom sebagai React Component
 const LongArrowLeft = () => (
@@ -16,12 +17,17 @@ const LongArrowRight = () => (
 );
 
 const CustomPagination = ({ count = 10, page = 1, onChange }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <div className="flex justify-center p-4">
             <Pagination
                 count={count}
                 page={page}
                 onChange={onChange}
+                siblingCount={isMobile ? 0 : 1}
+                boundaryCount={isMobile ? 1 : 2}
                 renderItem={(item) => (
                     <PaginationItem
                         components={{
@@ -48,10 +54,9 @@ const CustomPagination = ({ count = 10, page = 1, onChange }) => {
                     '& .MuiPaginationItem-root:hover': {
                         backgroundColor: '#A6D1FF',
                     },
-
                     '& .MuiPaginationItem-ellipsis': {
-                        fontSize: '1rem', // bikin kecil biar gak naik
-                        lineHeight: '48px', // sejajarin dengan tombol
+                        fontSize: '1rem',
+                        lineHeight: '48px',
                         verticalAlign: 'middle',
                     },
                 }}
