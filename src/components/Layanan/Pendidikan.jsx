@@ -26,14 +26,16 @@ const Pendidikan = () => {
     ];
 
     return (
-        <div className="px-10 sm:px-6 lg:px-16 py-10 pb-40 bg-cover bg-center">
+        <div className="px-4 sm:px-6 lg:px-16 py-10 pb-20 bg-cover bg-center">
             <Section
                 title={"Pendidikan di Desa Sukolilo"}
-                description={"Desa Sukolilo terus mendukung kemajuan pendidikan melalui keberadaan sekolah-sekolah formal, lembaga pendidikan nonformal, serta program literasi masyarakat."}
+                description={
+                    "Desa Sukolilo terus mendukung kemajuan pendidikan melalui keberadaan sekolah-sekolah formal, lembaga pendidikan nonformal, serta program literasi masyarakat."
+                }
                 rounded="rounded-3xl"
                 bgImage="url('/src/assets/img/Berita Acara BG.png')"
             >
-                <div className="grid sm:grid-cols-2 gap-y-2 text-left text-xl pt-6 px-20 font-semibold justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-left text-base sm:text-lg md:text-xl pt-6 max-w-5xl mx-auto">
                     {sekolahList.map((nama, i) => (
                         <div key={i} className="flex gap-2">
                             <span className="font-semibold">{i + 1}.</span>
@@ -42,7 +44,7 @@ const Pendidikan = () => {
                     ))}
                 </div>
             </Section>
-        </div >
+        </div>
     );
 };
 
