@@ -27,7 +27,7 @@ const dataTempat = [
 const TempatDiDesa = () => {
     return (
         <Section
-            title={"Tempat Tempat di desa"}
+            title={"Tempat Tempat di Desa"}
             description={
                 "Desa Sukolilo memiliki beragam lokasi penting yang menjadi pusat kegiatan masyarakat, pelayanan publik, dan potensi lokal. Mulai dari kantor desa, sekolah, tempat ibadah, fasilitas kesehatan, hingga lokasi wisata dan sentra UMKM, semuanya hadir untuk mendukung kehidupan warga dan memperkuat identitas desa."
             }

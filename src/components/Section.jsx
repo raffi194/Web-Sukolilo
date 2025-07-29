@@ -1,14 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Section = ({ title, description, bgColor, children, padBot }) => {
+const Section = ({ title, description, bgColor, children, padBot, rounded, bgImage }) => {
     return (
         <motion.div
-            className='text-center py-10 px-4 sm:px-6'
+            className={`text-center py-10 px-4 sm:px-6 ${rounded ?? ""}`}
             style={{
                 backgroundColor: bgColor || "var(--clr-primary-1)",
                 paddingBottom: padBot,
+                backgroundImage: bgImage,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
             }}
+
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}

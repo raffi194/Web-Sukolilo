@@ -200,7 +200,7 @@ const Usaha = () => {
                         currentItems.map((item, index) => (
                             <CardUsaha
                                 key={`${item.title}-${index}`}
-                                image={item.image || "src/assets/img/placeholder usaha.png"}
+                                image={item.image || "src/assets/img/default_placeholder_usaha.png"}
                                 title={item.title}
                                 description={item.description}
                                 address={item.address}
