@@ -36,9 +36,9 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
                 <span>082212345678</span>
               </a>
-              <a href="mailto:sukolilo@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors">
+              <a href="mailto:pemdessukolilo@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors">
                 <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4" />
-                <span>sukolilo@gmail.com</span>
+                <span>pemdessukolilo@gmail.com</span>
               </a>
             </div>
           </div>

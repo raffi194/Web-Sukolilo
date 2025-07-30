@@ -46,11 +46,11 @@ const PerangkatDesaSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[var(--black)]">
-            Perangkat Desa Sukolilo
+            Dalam Perbaikan
           </h2>
-          <p className="text-gray-600 mt-2 text-base md:text-lg max-w-2xl mx-auto">
+          {/* <p className="text-gray-600 mt-2 text-base md:text-lg max-w-2xl mx-auto">
             Melayani dengan Hati bersama Membangun Masyarakat Sejahtera
-          </p>
+          </p> */}
         </motion.div>
 
         {/* Kontainer fleksibel */}
@@ -69,8 +69,7 @@ const PerangkatDesaSection = () => {
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              {/* Gambar */}
-              <div className="relative">
+              {/* <div className="relative">
                 <div className="overflow-hidden w-full h-80 mx-auto">
                   <img
                     src={perangkat.gambar}
@@ -80,7 +79,6 @@ const PerangkatDesaSection = () => {
                 </div>
               </div>
 
-              {/* Nama & Jabatan */}
               <div className="mt-4 text-left px-2">
                 <h3 className="text-xl font-semibold text-[var(--black)]">
                   {perangkat.nama}
@@ -88,7 +86,7 @@ const PerangkatDesaSection = () => {
                 <p className="text-[var(--clr-primary-5)] font-medium mt-1">
                   {perangkat.jabatan}
                 </p>
-              </div>
+              </div> */}
             </motion.div>
           ))}
         </motion.div>

@@ -182,11 +182,12 @@ const Usaha = () => {
                             key={category.id}
                             text={category.category}
                             isActive={selectedCategory === category.category}
-                            onClick={() =>
+                            onClick={() => {
+                                setCurrentPage(1);
                                 setSelectedCategory(prev =>
                                     prev === category.category ? null : category.category
-                                )
-                            }
+                                );
+                            }}
                         />
                     ))}
                 </div>
