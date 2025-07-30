@@ -34,16 +34,19 @@ const JumlahKK = () => {
     const initialData = {
       x: years,
       y: Array(years.length).fill(0),
-      type: 'bar',
+      type: 'scatter', // UBAH dari 'bar' ke 'scatter'
+      mode: 'lines+markers', // Tambahkan mode
       marker: { color: '#2F9CFF' },
+      line: { shape: 'linear' },
       name: 'Jumlah KK',
       text: Array(years.length).fill(''),
-      textposition: 'outside',
+      textposition: 'top center',
       textfont: {
         size: 12,
         color: '#374151'
       }
     };
+
 
     setAnimatedData([initialData]);
 
@@ -72,8 +75,7 @@ const JumlahKK = () => {
           clearInterval(animation);
           setAnimatedData([{
             ...initialData,
-            y: kkCounts,
-            text: kkCounts.map(val => val.toString())
+            y: kkCounts
           }]);
         }
       }, stepInterval);
@@ -97,11 +99,19 @@ const JumlahKK = () => {
       title: 'Jumlah KK',
       automargin: true
     },
+    hoverlabel: {
+      bgcolor: '#ffffff',        // background tooltip
+      bordercolor: '#2F9CFF',    // border tooltip
+      font: {
+        color: '#2F9CFF',        // ← warna teksnya di sini
+        size: 14
+      }
+    },
     paper_bgcolor: '#EEF8FF',
     plot_bgcolor: '#EEF8FF',
-    hovermode: false,
     dragmode: false
   }), []);
+
 
   const chartConfig = {
     responsive: true,
@@ -130,6 +140,7 @@ const JumlahKK = () => {
               layout={chartLayout}
               config={chartConfig}
               className="w-full h-full"
+              style={{ cursor: 'default' }}
             />
           </div>
         ) : (

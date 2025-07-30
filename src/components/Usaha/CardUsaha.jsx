@@ -28,15 +28,19 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
             {/* Image Container */}
             <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 overflow-hidden">
                 <img
-                    src={image}
+                    src={`src/assets/img/foto-usaha/${title}.jpg`}
+                    onError={(e) => {
+                        e.target.onerror = null; // biar gak infinite loop kalo default-nya juga error
+                        e.target.src = "src/assets/img/default_placeholder_usaha.png";
+                    }}
                     className="
-                        w-full 
-                        h-full 
-                        object-cover 
-                        transition-transform 
-                        duration-500 
-                        hover:scale-110
-                    "
+            w-full 
+            h-full 
+            object-cover 
+            transition-transform 
+            duration-500 
+            hover:scale-110
+        "
                     alt={title}
                     loading="lazy"
                 />
