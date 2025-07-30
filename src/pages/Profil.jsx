@@ -11,7 +11,12 @@ import JumlahKK from '../components/Profil/JumlahKK.jsx';
 const Profil = () => {
     return (
         <div className='pb-10 flex flex-col gap-10 background-color: var(--clr-primary-1)'>
-            <Hero title1="Profil Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
+            <Hero
+                title1="Profil Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera"
+                videoId="dTGhhGno66M"
+                start={215}
+                end={290}
+                clip={true} />
             <VisiMisi />
             <SejarahDesa />
             <BaganDesa />

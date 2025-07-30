@@ -5,17 +5,20 @@ import FiturWebsite from "../components/Beranda/FiturWebsite";
 import MottoSection from "../components/Beranda/MottoSection";
 import LayananSurat from "../components/Beranda/LayananSurat";
 import BatasDesa from "../components/Profil/BatasDesa.jsx";
-import YouTubeClipPlayer from "../components/YouTubeClipPlayer.jsx";
 
 const Beranda = () => {
     return (
         <>
             <Hero
                 title1={<>Selamat Datang di <br /> Website Desa Sukolilo</>}
-                description={<>Melayani dengan Hati bersama Membangun Masyarakat Sejahtera</>}
+                description={<>Kami percaya bahwa pelayanan terbaik lahir dari ketulusan. Bersama warga, kami terus bergerak membangun desa yang lebih mandiri, modern, dan sejahtera.</>}
                 videoId="dTGhhGno66M"
                 start={19}
                 end={76}
+                clip={true}
+                textAlign="left"
+                addOn="Kabupaten Malang"
+                justifyContent="start"
             />
             <main>
                 <FiturWebsite />

@@ -68,27 +68,10 @@ const YouTubeClipPlayer = ({ videoIdInp, startInp, endInp }) => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* YouTube Video Background */}
-      <div className="absolute inset-0 bg-gradient-to-l from-blue-500/20 to-blue-900 z-5 pointer-events-none" />
       <div
         id="youtube-player"
-        className="absolute top-0 left-0 w-[120vw] h-[120vh] -translate-x-[10vw] -translate-y-[10vh] scale-110 pointer-events-none"
+        className="absolute top-0 left-0 w-[120vw] h-[120vh] -translate-x-[10vw] -translate-y-[10vh] scale-110 max-md:scale-[2.5] lg:scale-[1] max-sm:scale-[3] pointer-events-none"
       />
-      {/* SVG Wave Overlay (White) */}
-      <div className="absolute bottom-[-1px] left-0 w-full h-full pointer-events-none z-20 bg-transparent">
-        <svg
-          className="absolute bottom-[-1px] left-0 w-full h-auto"
-          viewBox="0 0 1280 123"
-          fill="white"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 122V19.9723C118.988 59.0145 192.362 68.2817 345.283 42.9785C522.432 -8.57577 616.036 -17.2424 761.564 42.9785C861.022 71.3877 922.67 91.9819 1042.49 42.9785C1172.11 -0.893238 1222.01 3.27547 1280 49.9805V122H0Z"
-            fill="white"
-            stroke="white"
-          />
-        </svg>
-      </div>
     </div>
   );
 };
