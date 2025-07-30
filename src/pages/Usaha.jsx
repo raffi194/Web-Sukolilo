@@ -162,7 +162,7 @@ const Usaha = () => {
     );
 
     return (
-        <div className='py-10 flex flex-col gap-10'>
+        <div className='pb-10 flex flex-col gap-10'>
             <Hero title1="Usaha Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
             <Section title="Katalog Usaha Desa Sukolilo"
                 data-section="catalog"
