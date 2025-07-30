@@ -7,7 +7,7 @@ const dataTempat = [
     {
         title: "4 Posyandu",
         jenis: "Kesehatan",
-        description: "Pelayanan kesehatan di Desa Sukolilo menjadi salah satu perhatian utama dalam mendukung kesejahteraan masyarakat.",
+        description: "Pelayanan kesehatan menjadi salah satu perhatian utama dalam mendukung kesejahteraan masyarakat.",
         icon: faWarehouse,
     },
     {

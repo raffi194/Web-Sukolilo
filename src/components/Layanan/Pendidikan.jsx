@@ -35,9 +35,9 @@ const Pendidikan = () => {
                 rounded="rounded-3xl"
                 bgImage="url('/src/assets/img/Berita Acara BG.png')"
             >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-left text-base sm:text-lg md:text-xl pt-6 max-w-5xl mx-auto">
+                <div className="columns-1 sm:columns-2 gap-8 text-base sm:text-lg md:text-xl pt-6 max-w-5xl mx-auto space-y-3">
                     {sekolahList.map((nama, i) => (
-                        <div key={i} className="flex gap-2">
+                        <div key={i} className="break-inside-avoid flex gap-2">
                             <span className="font-semibold">{i + 1}.</span>
                             <span>{nama}</span>
                         </div>
