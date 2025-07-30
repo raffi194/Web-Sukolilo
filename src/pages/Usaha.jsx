@@ -191,7 +191,7 @@ const Usaha = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10 2xl:px-30">
                     {error ? (
                         <ErrorMessage />
                     ) : loading ? (

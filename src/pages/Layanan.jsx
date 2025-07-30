@@ -16,7 +16,7 @@ const Layanan = () => {
                 description={<>Melayani dengan Hati bersama Membangun Masyarakat Sejahtera</>}
             >
                 <a
-                    href="#"
+                    href="#layanan-surat"
                     className="mt-8 inline-flex items-center justify-center gap-3 bg-[var(--clr-primary-5)] py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105"
                 >
                     <span className="text-[var(--white)] font-bold">
@@ -31,7 +31,9 @@ const Layanan = () => {
                 </a>
             </Hero>
             <LayananSurat />
-            <KetentuanSurat />
+            <section id="layanan-surat">
+                <KetentuanSurat />
+            </section>
             <TempatDiDesa />
             <Pendidikan />
         </div>

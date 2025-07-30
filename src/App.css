@@ -43,6 +43,10 @@
     }
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .animate-fadeIn {
     animation: fadeIn 0.5s ease-out forwards;
 }
@@ -201,12 +205,14 @@ h3 {
 }
 
 .embla {
-  overflow: hidden;
+    overflow: hidden;
 }
+
 .embla__container {
-  display: flex;
+    display: flex;
 }
+
 .embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
+    flex: 0 0 100%;
+    min-width: 0;
 }

@@ -36,7 +36,13 @@ const JumlahKK = () => {
       y: Array(years.length).fill(0),
       type: 'bar',
       marker: { color: '#2F9CFF' },
-      name: 'Jumlah KK'
+      name: 'Jumlah KK',
+      text: Array(years.length).fill(''),
+      textposition: 'outside',
+      textfont: {
+        size: 12,
+        color: '#374151'
+      }
     };
 
     setAnimatedData([initialData]);
@@ -56,7 +62,8 @@ const JumlahKK = () => {
 
         setAnimatedData([{
           ...initialData,
-          y: newValues
+          y: newValues,
+          text: newValues.map(val => val > 0 ? val.toString() : '')
         }]);
 
         currentValues = newValues;
@@ -65,7 +72,8 @@ const JumlahKK = () => {
           clearInterval(animation);
           setAnimatedData([{
             ...initialData,
-            y: kkCounts
+            y: kkCounts,
+            text: kkCounts.map(val => val.toString())
           }]);
         }
       }, stepInterval);
@@ -78,7 +86,7 @@ const JumlahKK = () => {
 
   const chartLayout = useMemo(() => ({
     autosize: true,
-    margin: { t: 40, r: 30, l: 40, b: 60 },
+    margin: { t: 60, r: 30, l: 40, b: 60 },
     xaxis: {
       title: 'Tahun',
       type: 'category',
@@ -91,13 +99,17 @@ const JumlahKK = () => {
     },
     paper_bgcolor: '#EEF8FF',
     plot_bgcolor: '#EEF8FF',
-    hovermode: 'closest'
+    hovermode: false,
+    dragmode: false
   }), []);
 
   const chartConfig = {
     responsive: true,
     displayModeBar: false,
-    scrollZoom: false
+    scrollZoom: false,
+    doubleClick: false,
+    showTips: false,
+    staticPlot: false
   };
 
   return (
