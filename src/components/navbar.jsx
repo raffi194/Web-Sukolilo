@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react'; 
 import logo from '../assets/img/Logo_sukolilo.png';
 import Navigation from './Navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,9 +21,24 @@ const mobileMenuVariants = {
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navbarRef = useRef();
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isOpen && navbarRef.current && !navbarRef.current.contains(event.target)) {
+                setIsOpen(false); 
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]); 
 
     return (
-        <div className='sticky top-0 w-full z-50 bg-white shadow-md'>
+        <div ref={navbarRef} className='sticky top-0 w-full z-50 bg-white shadow-md'>
             <nav className="text-black px-4 sm:px-10 py-4">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="text-black text-lg font-bold">
@@ -31,13 +46,11 @@ const Navbar = () => {
                             <img src={logo} alt="Logo" className="h-8 mr-2" />
                         </div>
                     </div>
-
                     <ul className="hidden md:flex items-center space-x-7">
                         {navLinks.map((link) => (
                             <li key={link.text}><Navigation linkTo={link.linkTo} text={link.text} /></li>
                         ))}
                     </ul>
-
                     <div className="md:hidden">
                         <button onClick={() => setIsOpen(!isOpen)}>
                             <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl text-[var(--clr-primary-5)]" />

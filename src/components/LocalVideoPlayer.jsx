@@ -1,25 +1,34 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from 'prop-types';
 
-const LocalVideoPlayer = ({ videoFileName }) => {
+const LocalVideoPlayer = ({ videoSrc }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const videoElement = videoRef.current;
-
-    if (!videoElement) return;
-
-    videoElement.play();
-    videoElement.muted = true;
-  }, []);
+    videoRef.current?.load();
+    videoRef.current?.play();
+  }, [videoSrc]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <video ref={videoRef} className="absolute top-0 left-0 w-[120vw] h-[120vh] -translate-y-[8vh] scale-110 max-md:scale-[2.5] lg:scale-[1] max-sm:scale-[3] pointer-events-none" autoPlay loop muted playsInline>
-        <source src={`src/assets/video/${videoFileName}`} type="video/mp4" />
+    <div className="absolute inset-0 w-full h-full">
+      <video
+        ref={videoRef}
+        key={videoSrc} 
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
   );
+};
+
+LocalVideoPlayer.propTypes = {
+    videoSrc: PropTypes.string.isRequired,
 };
 
 export default LocalVideoPlayer;

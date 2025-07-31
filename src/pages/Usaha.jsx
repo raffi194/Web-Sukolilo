@@ -163,7 +163,12 @@ const Usaha = () => {
 
     return (
         <div className='pb-10 flex flex-col gap-10'>
-            <Hero title1="Usaha Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
+            <Hero
+                title1="Usaha Desa Sukolilo"
+                description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera"
+                clip={false}
+                titleUsaha={usahaData}
+            />
             <Section title="Katalog Usaha Desa Sukolilo"
                 data-section="catalog"
                 description="Selamat datang di bagian Pembuatan Surat website Desa Sukolilo! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa."

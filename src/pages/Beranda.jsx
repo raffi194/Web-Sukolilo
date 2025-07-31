@@ -6,6 +6,9 @@ import MottoSection from "../components/Beranda/MottoSection";
 import LayananSurat from "../components/Beranda/LayananSurat";
 import BatasDesa from "../components/Profil/BatasDesa.jsx";
 
+import videoBerandaDesktop from "../assets/video/video beranda.mp4";
+import videoBerandaMobile from "../assets/video/Beranda Mobile.mp4";
+
 const Beranda = () => {
   return (
     <>
@@ -16,7 +19,10 @@ const Beranda = () => {
           </>
         }
         description={<>Kami percaya bahwa pelayanan terbaik lahir dari ketulusan. Bersama warga, kami terus bergerak membangun desa yang lebih mandiri, modern, dan sejahtera.</>}
-        videoId="video beranda.mp4"
+        
+        desktopVideo={videoBerandaDesktop}
+        mobileVideo={videoBerandaMobile}
+
         clip={true}
         textAlign="left"
         addOn="Kabupaten Malang"
@@ -27,7 +33,7 @@ const Beranda = () => {
         <MottoSection />
         <BeritaSection />
         <LayananSurat />
-        <BatasDesa />
+        {/* <BatasDesa /> */}
       </main>
     </>
   );
