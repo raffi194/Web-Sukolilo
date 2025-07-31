@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import LocalVideoPlayer from "./LocalVideoPlayer";
+import Carousel from "./Carousel";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -33,9 +34,7 @@ const Hero = ({
   children,
   clip,
   videoId,
-  start = 0,
-  end,
-  textAlign = "center", // ⬅️ NEW
+  textAlign = "center",
   justifyContent = "center",
 }) => {
   return (
@@ -44,6 +43,18 @@ const Hero = ({
       {clip && (
         <div className="absolute inset-0 z-0">
           <LocalVideoPlayer videoFileName={videoId} />
+        </div>
+      )}
+
+      {!clip && (
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Carousel
+            images={[
+              "../src/assets/img/foto-usaha/Akasia Motor.jpg",
+              "../src/assets/img/foto-usaha/Akasia Motor.jpg",
+            ]}
+            interval={4000}
+          />
         </div>
       )}
 
