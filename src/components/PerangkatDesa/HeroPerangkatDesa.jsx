@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Impor gambar untuk setiap perangkat desa
 import gambarKades from "../../assets/img/kades_sukolilo.png";
 import gambarSekdes from "../../assets/img/sekdes_sukolilo.png";
 
-// Varian animasi
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -19,7 +17,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-// Data perangkat desa
 const perangkatData = [
   {
     nama: "Andrean Noviandi, S.kom.",
@@ -37,7 +34,6 @@ const PerangkatDesaSection = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {/* Judul dan Deskripsi */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
@@ -53,7 +49,6 @@ const PerangkatDesaSection = () => {
           </p>
         </motion.div>
 
-        {/* Kontainer fleksibel */}
         <motion.div
           className="flex justify-center flex-wrap gap-12"
           variants={containerVariants}
@@ -69,7 +64,6 @@ const PerangkatDesaSection = () => {
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              {/* Gambar */}
               <div className="relative">
                 <div className="overflow-hidden w-full h-80 mx-auto">
                   <img
@@ -80,7 +74,6 @@ const PerangkatDesaSection = () => {
                 </div>
               </div>
 
-              {/* Nama & Jabatan */}
               <div className="mt-4 text-left px-2">
                 <h3 className="text-xl font-semibold text-[var(--black)]">
                   {perangkat.nama}
