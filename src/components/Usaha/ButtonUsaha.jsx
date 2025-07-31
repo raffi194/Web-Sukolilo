@@ -13,8 +13,8 @@ const ButtonUsaha = ({ text, onClick }) => {
         p-3 
         px-12 
         w-full 
-        sm:w-auto 
-        mx-auto
+        sm:w-auto
+        sm:text-lg
     '
             style={{
                 backgroundColor: 'var(--clr-primary-5)',

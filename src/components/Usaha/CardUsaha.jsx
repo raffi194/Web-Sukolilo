@@ -7,17 +7,18 @@ const CardUsaha = ({ image, title, address, linkTo, contact, categories }) => {
     return (
         <div
             className="
-    w-[320px]
-    h-[470px]
-    flex flex-col
-    bg-white
-    shadow-lg
-    rounded-xl
-    overflow-hidden
-    transform transition-all duration-300
-    hover:shadow-2xl hover:-translate-y-1
-    animate-fadeIn
-    mx-auto
+  w-full
+  max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
+  h-[470px]
+  flex flex-col
+  bg-white
+  shadow-lg
+  rounded-xl
+  overflow-hidden
+  transform transition-all duration-300
+  hover:shadow-2xl hover:-translate-y-1
+  animate-fadeIn
+  mx-auto
 "
         >
             {/* Image Container */}

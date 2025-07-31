@@ -181,7 +181,7 @@ const Usaha = () => {
                     />
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center pt-5 gap-2 sm:gap-5">
+                <div className="flex flex-wrap justify-center items-center pt-5 gap-2 sm:gap-5 gap-y-3">
                     {CATEGORIES.map((category) => (
                         <Button
                             key={category.id}
@@ -197,7 +197,7 @@ const Usaha = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10 2xl:px-30">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-8 mt-10 2xl:px-30">
                     {error ? (
                         <ErrorMessage />
                     ) : loading ? (

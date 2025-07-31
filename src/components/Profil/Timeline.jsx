@@ -12,29 +12,34 @@ const Timeline = () => {
     const timelineData = [
         {
             id: 1,
-            year: "Tahun 1995",
-            description: "Lorem ipsum dolor sit amet consectetur. Integer eu sollicitudin neque sem fermentum consectetur eget leo orci. Risus luctus id bibendum tortor habitant et turpis sit. Sit et cras morbi a diam accumsan eget. Scelerisque interdum in ut sed morbi varius eros. Id id diam nascetur egestas enim ultricies in viverra id. Sem facilisis risus non pulvinar sit. Sit quam dolor sed amet facilisi dui montes massa erat. Urna justo gravida ipsum donec gravida suspendisse luctus. Sed faucibus vestibulum nisl consectetur aliquet sed lacus ut ut."
+            year: "Sejarah awal",
+            description: "Dalam bahasa Indonesia, Kajabung bermakna ‘mengambil kesempatan, atau menunggu pada suatu tempat’. Dalam Bahasa Jawa bernama nyanggong atau menunggu pada suatu tempat, atau bisa juga berarti menghadang gerombolan pengacau. Nama ini berasaldari kesimpulan PrasastiKajabung yang berpadudengan uraian informasi dari beberapa sesepuh."
         },
         {
             id: 2,
-            year: "Tahun 2000",
-            description: "Lorem ipsum dolor sit amet consectetur. Integer eu sollicitudin neque sem fermentum consectetur eget leo orci. Risus luctus id bibendum tortor habitant et turpis sit. Sit et cras morbi a diam accumsan eget. Scelerisque interdum in ut sed ut ut."
+            year: "Menurut Arkeolog",
+            description: "Dosen Universitas Negeri Malang, Dwi Cahyono juga berpendapat, kata Jabung yang menjadi nama Desa ini berasal dari kata Jebing. Kata ini bersumber dari Kitab Paseban Yuda. Dalam kitab tersebut, Jabung merupakan nama sebuah kepatihan dari tahun 760 Masehi. "
         },
         {
             id: 3,
-            year: "Tahun 2005",
-            description: "Lorem ipsum dolor sit amet consectetur. Integer eu sollicitudin neque sem fermentum consectetur eget leo orci. Risus luctus id bibendum tortor habitant et turpis sit. Sit et cras morbi a diam accumsan eget. Scelerisque interdum in ut sed morbi varius eros. Id id diam nascetur egestas enim ultricies in viverra id. Sem facilisis risus non pulvulin viverra id. Sem facilisis risus non pulvinar sit. Sit quam dolor sed amet facilisi dui montes massa erat. Urna justo gravida ipsum donec gravida suspendisse luctus. Sed faucibus vestibulum nisl consectetur aliquet sed lacus ut ut."
+            year: "Sesepuh Masyarakat",
+            description: "Dalam versi lain, ada sumber lain yang merupakan cerita sesepuh masyarakat bernama Mbah Giran, menyebutan bahwa daerah Jabung dulunya menjadi markaspenjajah. Pada saat itu, daerah Jabung menjadi jalan penghubung antar wilayah penjajah. Jika direka-reka, kata Jabung berasal dari singkatan Jajah dan Hubung."
         },
         {
             id: 4,
-            year: "Tahun 2010",
-            description: "Lorem ipsum dolor sit amet consectetur. Integer eu sollicitudin neque sem fermentum consectetur eget leo orci. Risus luctus id bibendum tortor habitant et turpis sit. Sit et cras morbi a diam accumsan eget. Scelerisque interdum in ut sed morbi varius eros. Id id diam nascetur egestas enim ultricies in viverra id. Sem facilisis risus non pulvinar sit. Sit quam dolor sed amet facilisi dui montes massa erat. Urna justo gravida ipsum donec gravida suspendisse luctus. Sed faucibus vestibulum nisl consectetur aliquet sed lacus ut ut."
+            year: "Profil Desa",
+            description: "Sukolilo berpenduduk >6.000 jiwa, luas 337,8 hektar, dan berada di ketinggian 600 mdpl. Desa ini jadi pusat pendidikan dan pemerintahan Kecamatan Jabung, serta memiliki banyak pabrik sebagai tempat kerja warga."
+        },
+        {
+            id: 5,
+            year: "Komoditas Unggulan",
+            description: "Komoditas utama: padi, jagung, tebu, dan jeruk (berkualitas karena udara sejuk & irigasi lancar). Produk UMKM seperti kerupuk dan keripik telah dipasarkan secara nasional."
         }
     ];
 
     const gridColumnCount = timelineData.length;
     const timelineGridStyle = {
-        gridTemplateColumns: `200px repeat(${gridColumnCount}, 500px) 200px`,
+        gridTemplateColumns: `10px repeat(${gridColumnCount}, 500px) 200px`,
         gridTemplateRows: "auto auto auto",
     };
 
@@ -126,7 +131,7 @@ const Timeline = () => {
                 >
                     {/* Timeline Line */}
                     <div
-                        className="h-2 bg-blue-400 z-0 rounded-full self-center ml-[12%] transition-all duration-1000 ease-out"
+                        className="h-2 bg-blue-400 z-0 rounded-full self-center ml-[10%] transition-all duration-1000 ease-out"
                         style={{
                             gridColumn: `2 / ${gridColumnCount + 2}`,
                             gridRow: "1",

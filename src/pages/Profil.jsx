@@ -12,14 +12,14 @@ import mobileVideoFile from '../assets/video/Profile Mobile.mp4';
 
 const Profil = () => {
   return (
-    <div className="pb-10 flex flex-col gap-10 bg-[var(--clr-primary-1)]">
-      <Hero 
-        title1="Profil Desa Sukolilo" 
-        description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" 
-        
+    <div className="pb-10 flex flex-col gap-10 background-color: [var(--clr-primary-1)]">
+      <Hero
+        title1="Profil Desa Sukolilo"
+        description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera"
+
         desktopVideo={desktopVideoFile}
         mobileVideo={mobileVideoFile}
-        clip={true} 
+        clip={true}
       />
       <VisiMisi />
       <SejarahDesa />
