@@ -2,29 +2,28 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserAlt, 
+  faUserAlt,
   faTv,
   faToolbox,
 } from "@fortawesome/free-solid-svg-icons";
 
+import bgImage from '../../assets/img/Berita Acara BG.png';
+
 const fiturData = [
   {
-    icon: faUserAlt, 
+    icon: faUserAlt,
     title: "Profil Desa",
-    description:
-      "Kenali lebih dekat Desa Sukolilo Desa yang tumbuh dengan kearifan lokal dan semangat pembangunan berkelanjutan.",
+    description: "Kenali lebih dekat Desa Sukolilo Desa yang tumbuh dengan kearifan lokal dan semangat pembangunan berkelanjutan.",
   },
   {
     icon: faTv,
     title: "Layanan Desa",
-    description:
-      "Nikmati kemudahan mengakses berbagai layanan publik Desa Sukolilo cepat, transparan, dan tanpa ribet!",
+    description: "Nikmati kemudahan mengakses berbagai layanan publik Desa Sukolilo cepat, transparan, dan tanpa ribet!",
   },
   {
     icon: faToolbox,
     title: "Usaha Desa",
-    description:
-      "Dukung produk lokal dan wirausaha kreatif Sukolilo jelajahi berbagai usaha desa yang berkembang dan membanggakan!",
+    description: "Dukung produk lokal dan wirausaha kreatif Sukolilo jelajahi berbagai usaha desa yang berkembang dan membanggakan!",
   },
 ];
 
@@ -43,14 +42,19 @@ const cardVariant = {
 
 const FiturWebsite = () => {
   return (
-    <div className="pb-24">
-      <div className="mx-10 sm:px-6 lg:px-8 py-12 bg-[var(--clr-primary-1)] rounded-3xl">
-        <div className="container mx-auto px-4 py-16">
+    <div className="pb-24 bg">
+      <div 
+        className="relative mx-10 sm:px-6 lg:px-8 py-12 bg-[var(--clr-primary-1)] rounded-3xl overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="absolute inset-0 rounded-3xl"></div>
+        
+        <div className="relative z-10 container mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800">
+            <h2 className="text-3xl font-bold text-[var(--black)]">
               Fitur yang Disediakan Website Sukolilo
             </h2>
-            <p className="text-gray-500 mt-2">
+            <p className="text-[var(--black)] mt-2">
               Desa Sukolilo kini lebih dekat di genggaman Anda. Jelajahi layanan
               digital kami <br /> untuk kenyamanan dan kemajuan bersama.
             </p>

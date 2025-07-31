@@ -11,9 +11,9 @@ import LineString from 'ol/geom/LineString';
 import { Style, Circle as CircleStyle, Fill, Stroke } from 'ol/style';
 import { getDistance } from 'ol/sphere';
 
-const TARGET_COORD = [112.739283, -7.946796]; // Sukolilo (baru)
-const TARGET_AREA = 337.8; // Luas wilayah dalam hektar
-const TARGET_RADIUS = Math.sqrt(TARGET_AREA * 10000 / Math.PI); // Konversi ke radius dalam meter (≈1036m)
+const TARGET_COORD = [112.739283, -7.946796]; 
+const TARGET_AREA = 337.8; 
+const TARGET_RADIUS = Math.sqrt(TARGET_AREA * 10000 / Math.PI); 
 
 const MapWithUserLocation = () => {
     const mapRef = useRef();
@@ -56,7 +56,6 @@ const MapWithUserLocation = () => {
         if (mapRef.current) {
             const vectorSource = mapRef.current.getLayers().getArray()[1].getSource();
 
-            // Clear previous user features
             const features = vectorSource.getFeatures();
             const userFeatures = features.filter(f =>
                 f.get('type') === 'user' ||
@@ -65,7 +64,6 @@ const MapWithUserLocation = () => {
             );
             userFeatures.forEach(f => vectorSource.removeFeature(f));
 
-            // 🔴 Marker pengguna
             const userFeature = new Feature({
                 geometry: new Point(userPoint),
                 type: 'user'
@@ -81,7 +79,6 @@ const MapWithUserLocation = () => {
                 })
             );
 
-            // 🔵 Lingkaran akurasi user (hanya jika akurasi < 1000m)
             let accuracyCircle = null;
             if (acc < 1000) {
                 accuracyCircle = new Feature({
@@ -97,7 +94,6 @@ const MapWithUserLocation = () => {
                 );
             }
 
-            // ➡️ Garis antara user dan tujuan
             const targetPoint = fromLonLat(TARGET_COORD);
             const route = new Feature({
                 geometry: new LineString([userPoint, targetPoint]),
@@ -114,16 +110,13 @@ const MapWithUserLocation = () => {
                 })
             );
 
-            // Tambahkan fitur ke map
             const newFeatures = [userFeature, route];
             if (accuracyCircle) newFeatures.push(accuracyCircle);
             vectorSource.addFeatures(newFeatures);
 
-            // Hitung jarak
             const jarak = getDistance(userLonLat, TARGET_COORD);
             setDistance(jarak);
 
-            // Fit view ke semua fitur
             mapRef.current.getView().fit(vectorSource.getExtent(), {
                 padding: [80, 80, 80, 80],
                 duration: 1000,
@@ -136,25 +129,23 @@ const MapWithUserLocation = () => {
         setLocationStatus('🔄 Mencari lokasi...');
 
         if ('geolocation' in navigator) {
-            // Get current position first
             navigator.geolocation.getCurrentPosition(
                 updateUserLocation,
                 handleLocationError,
                 {
                     enableHighAccuracy: true,
                     timeout: 15000,
-                    maximumAge: 60000, // Cache for 1 minute
+                    maximumAge: 60000, 
                 }
             );
 
-            // Also watch position for updates
             watchIdRef.current = navigator.geolocation.watchPosition(
                 updateUserLocation,
                 handleLocationError,
                 {
                     enableHighAccuracy: true,
                     timeout: 15000,
-                    maximumAge: 30000, // Cache for 30 seconds
+                    maximumAge: 30000, 
                 }
             );
         } else {
@@ -165,7 +156,6 @@ const MapWithUserLocation = () => {
     useEffect(() => {
         const targetPoint = fromLonLat(TARGET_COORD);
 
-        // 🎯 Area sekitar desa Sukolilo
         const targetArea = new Feature({
             geometry: new Circle(targetPoint, TARGET_RADIUS),
             type: 'target'
@@ -178,7 +168,6 @@ const MapWithUserLocation = () => {
             })
         );
 
-        // 📍 Marker target
         const targetMarker = new Feature({
             geometry: new Point(targetPoint),
             type: 'target-marker'
@@ -214,7 +203,6 @@ const MapWithUserLocation = () => {
 
         mapRef.current = map;
 
-        // Request location
         requestLocation();
 
         return () => {
@@ -230,9 +218,8 @@ const MapWithUserLocation = () => {
             {!userCoords && (
                 <button
                     onClick={requestLocation}
-                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                    className=""
                 >
-                    🔄 Coba Lagi
                 </button>
             )}
             <div

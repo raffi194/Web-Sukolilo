@@ -24,7 +24,7 @@ const Profil = () => {
       <VisiMisi />
       <SejarahDesa />
       <BaganDesa />
-      {/* <BatasDesa /> */}
+      <BatasDesa />
       <PembagianWilayah />
       <JumlahKK />
     </div>
