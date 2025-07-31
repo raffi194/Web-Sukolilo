@@ -22,7 +22,7 @@ const AccordionItem = ({ item, index, activeIndex, setActiveIndex }) => {
     const isOpen = index === activeIndex;
     return (
         <div className="bg-[var(--clr-primary-1)] rounded-lg shadow-sm">
-            <button onClick={() => setActiveIndex(isOpen ? null : index)} className="w-full flex justify-between items-center text-left py-4 px-6 focus:outline-none">
+            <button onClick={() => setActiveIndex(isOpen ? null : index)} className="w-full flex justify-between items-center text-left py-4 px-6 focus:outline-none cursor-pointer">
                 <span className="text-base md:text-lg font-semibold text-[var(--black)]">{item.title}</span>
                 <motion.div
                     className="bg-[var(--clr-primary-5)] text-white rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0"
@@ -67,7 +67,7 @@ const KetentuanSurat = () => {
                         Selamat datang di bagian Pembuatan Surat website Desa Krisik! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa.
                     </p>
                 </div>
-                
+
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* PERBAIKAN: Menambahkan 'gap-4' untuk jarak vertikal antar item */}
                     <div className="flex flex-col gap-4">

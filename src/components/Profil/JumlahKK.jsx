@@ -34,10 +34,19 @@ const JumlahKK = () => {
     const initialData = {
       x: years,
       y: Array(years.length).fill(0),
-      type: 'bar',
+      type: 'scatter', // UBAH dari 'bar' ke 'scatter'
+      mode: 'lines+markers', // Tambahkan mode
       marker: { color: '#2F9CFF' },
-      name: 'Jumlah KK'
+      line: { shape: 'linear' },
+      name: 'Jumlah KK',
+      text: Array(years.length).fill(''),
+      textposition: 'top center',
+      textfont: {
+        size: 12,
+        color: '#374151'
+      }
     };
+
 
     setAnimatedData([initialData]);
 
@@ -56,7 +65,8 @@ const JumlahKK = () => {
 
         setAnimatedData([{
           ...initialData,
-          y: newValues
+          y: newValues,
+          text: newValues.map(val => val > 0 ? val.toString() : '')
         }]);
 
         currentValues = newValues;
@@ -78,7 +88,7 @@ const JumlahKK = () => {
 
   const chartLayout = useMemo(() => ({
     autosize: true,
-    margin: { t: 40, r: 30, l: 40, b: 60 },
+    margin: { t: 60, r: 30, l: 40, b: 60 },
     xaxis: {
       title: 'Tahun',
       type: 'category',
@@ -89,15 +99,27 @@ const JumlahKK = () => {
       title: 'Jumlah KK',
       automargin: true
     },
+    hoverlabel: {
+      bgcolor: '#ffffff',        // background tooltip
+      bordercolor: '#2F9CFF',    // border tooltip
+      font: {
+        color: '#2F9CFF',        // ← warna teksnya di sini
+        size: 14
+      }
+    },
     paper_bgcolor: '#EEF8FF',
     plot_bgcolor: '#EEF8FF',
-    hovermode: 'closest'
+    dragmode: false
   }), []);
+
 
   const chartConfig = {
     responsive: true,
     displayModeBar: false,
-    scrollZoom: false
+    scrollZoom: false,
+    doubleClick: false,
+    showTips: false,
+    staticPlot: false
   };
 
   return (
@@ -118,6 +140,7 @@ const JumlahKK = () => {
               layout={chartLayout}
               config={chartConfig}
               className="w-full h-full"
+              style={{ cursor: 'default' }}
             />
           </div>
         ) : (

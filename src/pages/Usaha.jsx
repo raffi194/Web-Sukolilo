@@ -162,7 +162,7 @@ const Usaha = () => {
     );
 
     return (
-        <div className='py-10 flex flex-col gap-10'>
+        <div className='pb-10 flex flex-col gap-10'>
             <Hero title1="Usaha Desa Sukolilo" description="Melayani dengan Hati bersama Membangun Masyarakat Sejahtera" />
             <Section title="Katalog Usaha Desa Sukolilo"
                 data-section="catalog"
@@ -176,22 +176,23 @@ const Usaha = () => {
                     />
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center pt-5 gap-5">
+                <div className="flex flex-wrap justify-center items-center pt-5 gap-2 sm:gap-5">
                     {CATEGORIES.map((category) => (
                         <Button
                             key={category.id}
                             text={category.category}
                             isActive={selectedCategory === category.category}
-                            onClick={() =>
+                            onClick={() => {
+                                setCurrentPage(1);
                                 setSelectedCategory(prev =>
                                     prev === category.category ? null : category.category
-                                )
-                            }
+                                );
+                            }}
                         />
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-15 justify-center items-start gap-15 mt-10 2xl:px-30">
                     {error ? (
                         <ErrorMessage />
                     ) : loading ? (
@@ -200,7 +201,7 @@ const Usaha = () => {
                         currentItems.map((item, index) => (
                             <CardUsaha
                                 key={`${item.title}-${index}`}
-                                image={item.image || "src/assets/img/placeholder usaha.png"}
+                                image={item.image || "src/assets/img/default_placeholder_usaha.png"}
                                 title={item.title}
                                 description={item.description}
                                 address={item.address}

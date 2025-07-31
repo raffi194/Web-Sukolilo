@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import gambarKades from "../../assets/img/kades_sukolilo.png";
-import gambarSekdes from "../../assets/img/sekdes_sukolilo.png";
+// Impor gambar untuk setiap perangkat desa
+import gambarKades from "../../assets/img/perangkat-desa-placeholder.jpg";
+import gambarSekdes from "../../assets/img/perangkat-desa-placeholder.jpg";
 
 const containerVariants = {
   hidden: { opacity: 0 },

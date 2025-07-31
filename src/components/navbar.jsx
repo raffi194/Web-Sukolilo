@@ -10,8 +10,7 @@ const navLinks = [
     { text: "Layanan", linkTo: "/layanan" },
     { text: "Profil Desa", linkTo: "/profil-desa" },
     { text: "Usaha Desa", linkTo: "/usaha-desa" },
-    { text: "Perangkat Desa", linkTo: "/perangkat-desa" },
-    { text: "Kontak", linkTo: "/kontak" },
+    { text: "Perangkat Desa", linkTo: "/perangkat-desa" }
 ];
 
 const mobileMenuVariants = {
@@ -30,11 +29,10 @@ const Navbar = () => {
                     <div className="text-black text-lg font-bold">
                         <div className="flex items-center">
                             <img src={logo} alt="Logo" className="h-8 mr-2" />
-                            <span className='hidden sm:inline'>Desa Sukolilo</span>
                         </div>
                     </div>
 
-                    <ul className="hidden md:flex items-center space-x-5">
+                    <ul className="hidden md:flex items-center space-x-7">
                         {navLinks.map((link) => (
                             <li key={link.text}><Navigation linkTo={link.linkTo} text={link.text} /></li>
                         ))}
@@ -60,9 +58,9 @@ const Navbar = () => {
                         <ul className="flex flex-col items-center py-4 space-y-2">
                             {navLinks.map((link) => (
                                 <li key={link.text} className="w-full text-center">
-                                    <Navigation 
-                                        linkTo={link.linkTo} 
-                                        text={link.text} 
+                                    <Navigation
+                                        linkTo={link.linkTo}
+                                        text={link.text}
                                         isMobile={true}
                                         onClick={() => setIsOpen(false)}
                                     />

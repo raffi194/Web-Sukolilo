@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 // SVG Custom sebagai React Component
 const LongArrowLeft = () => (
@@ -16,12 +17,17 @@ const LongArrowRight = () => (
 );
 
 const CustomPagination = ({ count = 10, page = 1, onChange }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
-        <div className="flex justify-center p-4">
+        <div className="flex justify-center p-4 sm:p-6">
             <Pagination
                 count={count}
                 page={page}
                 onChange={onChange}
+                siblingCount={isMobile ? 0 : 1}
+                boundaryCount={isMobile ? 1 : 1}
                 renderItem={(item) => (
                     <PaginationItem
                         components={{
@@ -35,10 +41,10 @@ const CustomPagination = ({ count = 10, page = 1, onChange }) => {
                     '& .MuiPaginationItem-root': {
                         color: 'black',
                         lineHeight: '1.5',
-                        fontSize: '1.2rem',
                         fontWeight: 'bold',
-                        minWidth: '48px',
-                        minHeight: '48px',
+                        fontSize: isMobile ? '0.85rem' : '1.2rem',
+                        minWidth: isMobile ? '32px' : '48px',
+                        minHeight: isMobile ? '32px' : '48px',
                         borderRadius: '50%',
                     },
                     '& .MuiPaginationItem-root.Mui-selected': {
@@ -48,13 +54,13 @@ const CustomPagination = ({ count = 10, page = 1, onChange }) => {
                     '& .MuiPaginationItem-root:hover': {
                         backgroundColor: '#A6D1FF',
                     },
-
                     '& .MuiPaginationItem-ellipsis': {
-                        fontSize: '1rem', // bikin kecil biar gak naik
-                        lineHeight: '48px', // sejajarin dengan tombol
+                        fontSize: isMobile ? '0.75rem' : '1rem',
+                        lineHeight: isMobile ? '32px' : '48px',
                         verticalAlign: 'middle',
                     },
                 }}
+
             />
         </div>
     );

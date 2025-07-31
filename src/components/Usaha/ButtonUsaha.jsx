@@ -5,7 +5,17 @@ const ButtonUsaha = ({ text, onClick }) => {
     return (
         <button
             onClick={onClick}
-            className='body-4-semibold mb-3 border-2 rounded-[20px] p-3 px-12'
+            className='
+        body-4-semibold 
+        mb-3 
+        border-2 
+        rounded-[20px] 
+        p-3 
+        px-12 
+        w-full 
+        sm:w-auto 
+        mx-auto
+    '
             style={{
                 backgroundColor: 'var(--clr-primary-5)',
                 borderColor: 'var(--clr-primary-5)',
