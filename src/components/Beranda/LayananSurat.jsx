@@ -53,6 +53,8 @@ const LayananSurat = () => {
 
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeQlaeCNZA6sNVOxHB0mEfhUHDLjZHgR1uPXzFv0mzJeieMAQ/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center justify-center gap-3 bg-[var(--clr-primary-5)] py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105"
           >
             <span className="text-[var(--clr-primary-1)] font-bold">
