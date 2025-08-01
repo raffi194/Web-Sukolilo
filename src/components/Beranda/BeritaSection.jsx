@@ -151,7 +151,7 @@ const BeritaSection = () => {
 const handleRetry = () => { window.location.reload(); };
 
 return (
-    <section className="py-16 md:py-20 bg-[var(--clr-primary-1)] mx-4 md:mx-10 rounded-2xl" style={{ backgroundImage: `url(${bgImage})` }}>
+    <section className="py-8 md:py-8 bg-[var(--clr-primary-1)] mx-4 md:mx-24 rounded-2xl" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="container mx-auto px-4">
             <motion.div className="text-center mb-12" variants={contentVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
                 <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Berita dan Pengumuman Desa Sukolilo</motion.h2>
