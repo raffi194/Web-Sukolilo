@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay"; 
 import { motion } from "framer-motion";
 import FetchCSVNewsData from "./FetchCSVNewsData";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,6 +24,16 @@ const contentVariants = {
     transition: { staggerChildren: 0.15, delayChildren: 0.2 },
   },
 };
+
+ const truncateText = (text, limit) => {
+      if (!text) return "";
+      const words = text.split(" ");
+      if (words.length > limit) {
+        return words.slice(0, limit).join(" ") + "...";
+      }
+      return text;
+    };
+
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
@@ -47,15 +58,28 @@ const BeritaCard = ({ berita, isActive }) => {
         <div className="flex flex-col md:flex-row bg-white h-full overflow-hidden shadow-lg rounded-2xl">
             <div className="w-full md:w-2/5 h-56 md:h-full overflow-hidden relative">
                 {imageLoading && (<div className="absolute inset-0 flex items-center justify-center bg-gray-100"><FontAwesomeIcon icon={faSpinner} className="text-gray-400 text-2xl animate-spin" /></div>)}
-                <motion.img src={imageError || !berita.Gambar ? defaultImage : berita.Gambar} alt={berita.Judul || "Berita"} className="w-full h-full object-cover" onError={handleImageError} onLoad={handleImageLoad} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4, ease: "easeOut" }} style={{ display: imageLoading ? 'none' : 'block' }} />
+                <motion.img src={berita.Gambar} alt={berita.Judul || "Berita"} className="w-full h-full object-cover" onError={handleImageError} onLoad={handleImageLoad} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4, ease: "easeOut" }} style={{ display: imageLoading ? 'none' : 'block' }} />
             </div>
             <div className="w-full md:w-3/5 p-4 md:p-6 lg:p-8 flex flex-col">
                 <motion.div className="flex flex-col h-full" variants={contentVariants} animate={isActive ? "visible" : "hidden"} initial="hidden">
                     {berita["Tipe Berita"] && (<motion.span variants={itemVariants} className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md self-start mb-2">{berita["Tipe Berita"]}</motion.span>)}
                     <motion.h3 variants={itemVariants} className="text-lg md:text-xl xl:text-2xl font-bold mt-1 text-gray-800 leading-tight">{berita.Judul || "Judul tidak tersedia"}</motion.h3>
                     <motion.p variants={itemVariants} className="text-sm mt-3 text-gray-500 flex items-center gap-2"><FontAwesomeIcon icon={faCalendarDay} />{formatDate(berita.Tanggal)}</motion.p>
-                    <motion.p variants={itemVariants} className="text-gray-600 mt-4 text-sm md:text-base line-clamp-3 flex-grow">{berita.Deskripsi || "Deskripsi tidak tersedia"}</motion.p>
-                    <motion.button variants={itemVariants} className="mt-auto pt-4 text-blue-600 font-semibold self-start hover:underline hover:text-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded px-1" onClick={() => { console.log(`Maps to berita with ID: ${berita.ID}`); }} aria-label={`Baca selengkapnya tentang ${berita.Judul}`}>Baca Selengkapnya →</motion.button>
+                    <motion.p 
+                      variants={itemVariants} 
+                      className="text-gray-600 mt-4 text-sm md:text-base flex-grow"
+                    >
+                        {truncateText(berita.Deskripsi || "Deskripsi tidak tersedia", 15)}
+                    </motion.p>
+                    <motion.div variants={itemVariants} className="mt-auto pt-4 self-start">
+                      <Link
+                        to={`/berita/${berita.ID}`}
+                        className="text-blue-600 font-semibold hover:underline hover:text-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded px-1"
+                        aria-label={`Baca selengkapnya tentang ${berita.Judul}`}
+                      >
+                        Baca Selengkapnya →
+                      </Link>
+                    </motion.div>
                 </motion.div>
             </div>
         </div>

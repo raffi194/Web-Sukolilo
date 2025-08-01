@@ -6,6 +6,7 @@ import {
   faTv,
   faToolbox,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom"; 
 
 import bgImage from '../../assets/img/Berita Acara BG.png';
 
@@ -14,16 +15,19 @@ const fiturData = [
     icon: faUserAlt,
     title: "Profil Desa",
     description: "Kenali lebih dekat Desa Sukolilo Desa yang tumbuh dengan kearifan lokal dan semangat pembangunan berkelanjutan.",
+    link: "/profil-desa",
   },
   {
     icon: faTv,
     title: "Layanan Desa",
     description: "Nikmati kemudahan mengakses berbagai layanan publik Desa Sukolilo cepat, transparan, dan tanpa ribet!",
+    link: "/layanan",
   },
   {
     icon: faToolbox,
     title: "Usaha Desa",
     description: "Dukung produk lokal dan wirausaha kreatif Sukolilo jelajahi berbagai usaha desa yang berkembang dan membanggakan!",
+    link: "/usaha-desa",
   },
 ];
 
@@ -77,10 +81,13 @@ const FiturWebsite = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mt-2 mb-2">
                   {fitur.title}
                 </h3>
-                <p className="text-gray-600">{fitur.description}</p>
-                <a href="#" className="text-[var(--clr-primary-5)] font-semibold mt-4 underline hover:text-blue-700">
-                  Read More
-                </a>
+                <p className="text-gray-600 flex-grow">{fitur.description}</p>
+                <Link 
+                  to={fitur.link} 
+                  className="text-[var(--clr-primary-5)] font-semibold mt-4 underline hover:text-blue-700"
+                >
+                  Selengkapnya
+                </Link>
               </motion.div>
             ))}
           </div>
