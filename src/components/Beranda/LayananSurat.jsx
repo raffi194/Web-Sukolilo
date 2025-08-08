@@ -44,7 +44,7 @@ const LayananSurat = () => {
             Layanan Pembuatan Surat
           </h2>
           <p className="text-gray-500 mt-2">
-            Selamat datang di bagian Pembuatan Surat website Desa Krisik! Kami
+            Selamat datang di bagian Pembuatan Surat website Desa Sukolilo! Kami
             hadir untuk memudahkan Anda dalam setiap <br /> langkah pembuatan
             surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan
             pembuatan surat yang <br /> dirancang untuk memenuhi kebutuhan

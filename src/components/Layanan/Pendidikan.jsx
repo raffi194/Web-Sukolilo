@@ -6,7 +6,7 @@ const Pendidikan = () => {
         "SDS Sunan Kali Jaga (Gedangan)",
         "SMP 123 Sunan Kali Jaga (RT 19)",
         "SMK Sunan Kali Jaga (RT 19)",
-        "IA (RT 20)",
+        "IAI (RT 20)",
         "SDN 1 SUKOLILO (RT 2)",
         "TK Muslimat NU (RT 10)",
         "MTS Ahyan (RT 02)",
@@ -35,7 +35,7 @@ const Pendidikan = () => {
                 rounded="rounded-3xl"
                 bgImage="url('/src/assets/img/Berita Acara BG.png')"
             >
-                <div className="columns-1 sm:columns-2 gap-8 text-base sm:text-lg md:text-xl pt-6 max-w-5xl mx-auto space-y-3">
+                <div className="columns-1 sm:columns-2 gap-8 text-base sm:text-lg md:text-xl pt-6 max-w-5xl mx-auto space-y-3 text-left">
                     {sekolahList.map((nama, i) => (
                         <div key={i} className="break-inside-avoid flex gap-2">
                             <span className="font-semibold">{i + 1}.</span>

@@ -64,7 +64,7 @@ const KetentuanSurat = () => {
                         Ketentuan Pembuatan Surat
                     </h2>
                     <p className="text-gray-500 mt-2 text-base md:text-lg max-w-2xl mx-auto">
-                        Selamat datang di bagian Pembuatan Surat website Desa Krisik! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa.
+                        Selamat datang di bagian Pembuatan Surat website Desa Sukolilo! Kami hadir untuk memudahkan Anda dalam setiap langkah pembuatan surat yang Anda butuhkan. Di sini, kami menyediakan berbagai layanan pembuatan surat yang dirancang untuk memenuhi kebutuhan administrasi warga desa.
                     </p>
                 </div>
 

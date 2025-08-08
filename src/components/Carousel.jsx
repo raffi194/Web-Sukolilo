@@ -1,52 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const Carousel = ({ images, interval = 5000 }) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, interval);
-        return () => clearInterval(timer);
-    }, [images.length, interval]);
-
-    const prevSlide = () => {
-        setActiveIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 1 : prevIndex - 1
-        );
-    };
-
-    const nextSlide = () => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-    };
+    const [emblaRef] = useEmblaCarousel(
+        { loop: true, align: "start", dragFree: false },
+        [Autoplay({ delay: interval, stopOnInteraction: false })]
+    );
 
     return (
-        <div className="relative w-full h-full">
-            <div className="flex transition-transform duration-700 ease-in-out h-full"
-                style={{ transform: `translateX/2`, width: `${images.length * 100}%` }}>
+        <div className="embla overflow-hidden w-full h-full" ref={emblaRef}>
+            <div className="embla__container flex">
                 {images.map((src, index) => (
-                    <img
+                    <div
+                        className="embla__slide flex-[0_0_100%] relative h-screen nd:h-full"
                         key={index}
-                        src={src}
-                        alt={`slide-${index}`}
-                        className="w-full h-full object-cover flex-shrink-0"
-                    />
+                    >
+                        <img
+                            src={`${src}.jpg`}
+                            alt={`slide-${index}`}
+                            className="w-full h-full object-cover md:scale-100 transition-transform duration-500"
+                            style={{ transformOrigin: "center" }}
+                        />
+                    </div>
+
                 ))}
             </div>
-
-            <button
-                onClick={prevSlide}
-                className="absolute top-1/2 left-4 z-20 transform -translate-y-1/2 bg-white/40 hover:bg-white/60 p-2 rounded-full"
-            >
-                ‹
-            </button>
-            <button
-                onClick={nextSlide}
-                className="absolute top-1/2 right-4 z-20 transform -translate-y-1/2 bg-white/40 hover:bg-white/60 p-2 rounded-full"
-            >
-                ›
-            </button>
         </div>
     );
 };

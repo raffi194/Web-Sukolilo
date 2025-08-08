@@ -1,15 +1,17 @@
 import Section from '../Section';
 import React, { useEffect, useState, useMemo } from 'react';
 import Plot from 'react-plotly.js';
-
+import FetchCSVKKData from './FetchCSVKKData';
 const JumlahKK = () => {
+  const { csvData: kkData, loading, error } = FetchCSVKKData();
   const [isVisible, setIsVisible] = useState(false);
   const [animatedData, setAnimatedData] = useState([]);
 
   const chartData = useMemo(() => ({
-    years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
-    kkCounts: [175, 180, 185, 220, 225, 230, 235, 190, 195, 200, 205, 210, 215]
-  }), []);
+    years: kkData.map(row => row.Tahun),
+    kkCounts: kkData.map(row => row.JumlahKK)
+  }), [kkData]);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(

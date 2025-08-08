@@ -11,9 +11,9 @@ import LineString from 'ol/geom/LineString';
 import { Style, Circle as CircleStyle, Fill, Stroke } from 'ol/style';
 import { getDistance } from 'ol/sphere';
 
-const TARGET_COORD = [112.739283, -7.946796]; 
-const TARGET_AREA = 337.8; 
-const TARGET_RADIUS = Math.sqrt(TARGET_AREA * 10000 / Math.PI); 
+const TARGET_COORD = [112.739283, -7.946796];
+const TARGET_AREA = 337.8;
+const TARGET_RADIUS = Math.sqrt(TARGET_AREA * 10000 / Math.PI);
 
 const MapWithUserLocation = () => {
     const mapRef = useRef();
@@ -23,6 +23,10 @@ const MapWithUserLocation = () => {
     const [accuracy, setAccuracy] = useState(null);
     const [locationStatus, setLocationStatus] = useState('Getting location...');
     const [userCoords, setUserCoords] = useState(null);
+
+    // 👇 GANTI useState DENGAN useRef UNTUK MENGHINDARI STALE CLOSURE
+    const isFirstFitRef = useRef(true);
+
 
     const handleLocationError = (error) => {
         let errorMessage = '';
@@ -117,11 +121,17 @@ const MapWithUserLocation = () => {
             const jarak = getDistance(userLonLat, TARGET_COORD);
             setDistance(jarak);
 
-            mapRef.current.getView().fit(vectorSource.getExtent(), {
-                padding: [80, 80, 80, 80],
-                duration: 1000,
-                maxZoom: 17,
-            });
+            // 👇 GUNAKAN .current UNTUK MEMERIKSA DAN MENGUBAH NILAI REF
+            if (isFirstFitRef.current) {
+                mapRef.current.getView().fit(vectorSource.getExtent(), {
+                    padding: [80, 80, 80, 80],
+                    duration: 1000,
+                    maxZoom: 17,
+                });
+                // 👇 SET .current MENJADI false AGAR TIDAK DIJALANKAN LAGI
+                isFirstFitRef.current = false;
+            }
+
         }
     };
 
@@ -135,7 +145,7 @@ const MapWithUserLocation = () => {
                 {
                     enableHighAccuracy: true,
                     timeout: 15000,
-                    maximumAge: 60000, 
+                    maximumAge: 60000,
                 }
             );
 
@@ -145,7 +155,7 @@ const MapWithUserLocation = () => {
                 {
                     enableHighAccuracy: true,
                     timeout: 15000,
-                    maximumAge: 30000, 
+                    maximumAge: 30000,
                 }
             );
         } else {
@@ -211,17 +221,17 @@ const MapWithUserLocation = () => {
             }
             map.setTarget(null);
         };
-    }, []);
+    }, []); // Dependency array sengaja dikosongkan agar setup hanya berjalan sekali
 
     return (
-        <div className="pt-15 px-10">
-            {!userCoords && (
-                <button
-                    onClick={requestLocation}
-                    className=""
-                >
-                </button>
-            )}
+        <div className="pt-6 px-4 sm:px-10">
+            {/* Status Lokasi */}
+            <div className="mb-4 p-3 rounded-lg text-sm font-medium shadow-sm
+                    bg-white border border-gray-200 text-gray-700">
+                {locationStatus}
+            </div>
+
+            {/* Peta */}
             <div
                 ref={targetRef}
                 style={{
@@ -233,29 +243,51 @@ const MapWithUserLocation = () => {
                 }}
             />
 
+            {/* Info Lokasi */}
             {distance && userCoords && (
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                    <p className="text-gray-700">
-                        <strong>📍 Koordinat Anda:</strong> {userCoords[1].toFixed(6)}, {userCoords[0].toFixed(6)}
-                        <br />
-                        <strong>🧭 Jarak ke Pusat Desa Sukolilo:</strong> {(distance / 1000).toFixed(2)} km ({Math.round(distance)} meter)
-                        <br />
-                        <strong>🎯 Akurasi Lokasi:</strong> ±{Math.round(accuracy)} meter
-                        <br />
+                <div className="mt-6 p-5 bg-white shadow-md rounded-xl border border-gray-200 space-y-3">
+                    <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                        📡 Informasi Lokasi
+                    </h3>
+
+                    <div className="text-gray-700 space-y-1">
+                        <p>
+                            <span className="font-medium">📍 Koordinat Anda:</span>{" "}
+                            {userCoords[1].toFixed(6)}, {userCoords[0].toFixed(6)}
+                        </p>
+                        <p>
+                            <span className="font-medium">🧭 Jarak ke Pusat Desa Sukolilo:</span>{" "}
+                            {(distance / 1000).toFixed(2)} km ({distance.toLocaleString()} m)
+                        </p>
+                        <p>
+                            <span className="font-medium">🎯 Akurasi Lokasi:</span>{" "}
+                            ±{Math.round(accuracy).toLocaleString()} m
+                        </p>
+                    </div>
+
+                    {/* Status Jarak */}
+                    <div className="mt-3">
                         {distance <= TARGET_RADIUS && (
-                            <span className="text-green-600 font-semibold">Anda berada di dalam wilayah Desa Sukolilo!</span>
+                            <span className="block p-2 rounded-lg bg-green-50 text-green-700 font-semibold text-center">
+                                ✅ Anda berada di dalam wilayah Desa Sukolilo
+                            </span>
                         )}
                         {distance > TARGET_RADIUS && distance <= TARGET_RADIUS * 1.5 && (
-                            <span className="text-orange-600 font-semibold">Anda dekat dengan wilayah Desa Sukolilo</span>
+                            <span className="block p-2 rounded-lg bg-yellow-50 text-yellow-700 font-semibold text-center">
+                                ⚠️ Anda dekat dengan wilayah Desa Sukolilo
+                            </span>
                         )}
                         {distance > TARGET_RADIUS * 1.5 && (
-                            <span className="text-red-600 font-semibold">Anda berada di luar wilayah Desa Sukolilo</span>
+                            <span className="block p-2 rounded-lg bg-red-50 text-red-700 font-semibold text-center">
+                                ❌ Anda berada di luar wilayah Desa Sukolilo
+                            </span>
                         )}
-                    </p>
+                    </div>
                 </div>
             )}
         </div>
     );
+
 };
 
 export default MapWithUserLocation;
