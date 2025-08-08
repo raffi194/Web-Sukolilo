@@ -24,7 +24,7 @@ const Carousel = ({ images, interval = 5000 }) => {
     return (
         <div className="relative w-full h-full">
             <div className="flex transition-transform duration-700 ease-in-out h-full"
-                style={{ transform: `translateX(-${activeIndex * 100}%)`, width: `${images.length * 100}%` }}>
+                style={{ transform: `translateX/2`, width: `${images.length * 100}%` }}>
                 {images.map((src, index) => (
                     <img
                         key={index}

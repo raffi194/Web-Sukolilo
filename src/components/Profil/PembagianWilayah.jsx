@@ -23,10 +23,9 @@ const PembagianWilayah = () => {
                     className="w-full max-w-[1349px] h-auto rounded-xl shadow-md object-contain"
                 />
             </div>
-
             <MapView />
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-4 sm:px-6 md:px-10'>
+            <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 px-4 sm:px-6 md:px-10'>
                 {pembagianWilayah.map((wilayah, index) => (
                     <div
                         key={index}
