@@ -56,7 +56,6 @@ const Usaha = () => {
 
 
 
-    // Destructure the return value from FetchCSVData
     const { csvData, loading, error } = FetchCSVData();
 
     const usahaData = csvData.map(item => {
@@ -71,7 +70,6 @@ const Usaha = () => {
         };
     });
 
-    // Memoize filtered data
     const filteredData = useMemo(() => {
         return usahaData.filter(item => {
             const lowerQuery = query.toLowerCase();
@@ -84,20 +82,16 @@ const Usaha = () => {
             const matchesCategory = (() => {
                 if (!selectedCategory) return true;
 
-                // Jika kategori yang dipilih adalah "Lainnya"
                 if (selectedCategory.toLowerCase() === "lainnya") {
-                    // Ambil semua kategori yang sudah didefinisikan dari CATEGORIES (kecuali "Lainnya")
                     const definedCategories = CATEGORIES
                         .filter(cat => cat.category.toLowerCase() !== "lainnya")
                         .map(cat => cat.category.toLowerCase());
 
-                    // Cek apakah item tidak memiliki kategori yang sudah didefinisikan
                     return !item.kategori.some(kat =>
                         definedCategories.includes(kat.toLowerCase())
                     );
                 }
 
-                // Untuk kategori lainnya, cek seperti biasa
                 return item.kategori.some(kat =>
                     kat.toLowerCase() === selectedCategory.toLowerCase()
                 );
@@ -105,15 +99,13 @@ const Usaha = () => {
 
             return matchesQuery && matchesCategory;
         });
-    }, [usahaData, query, selectedCategory]); // Tidak perlu categories di dependencies
+    }, [usahaData, query, selectedCategory]); 
 
 
-    // Reset page when search query changes
     React.useEffect(() => {
         setCurrentPage(1);
     }, [query]);
 
-    // Get paginated data from filtered results
     const currentItems = paginateData(filteredData, currentPage, itemsPerPage);
     const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -121,10 +113,8 @@ const Usaha = () => {
         setQuery(searchValue);
     };
 
-    // Handle page change
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
-        // Scroll ke section katalog usaha saja
         const catalogSection = document.querySelector('[data-section="catalog"]');
         if (catalogSection) {
             catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -132,7 +122,6 @@ const Usaha = () => {
     };
 
 
-    // Loading skeleton cards
     const LoadingCards = () => {
         return (
             <>
@@ -143,7 +132,6 @@ const Usaha = () => {
         );
     };
 
-    // Error component
     const ErrorMessage = () => (
         <div className="w-full text-center py-10">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">

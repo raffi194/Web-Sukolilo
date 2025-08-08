@@ -4,6 +4,7 @@ import BeritaSection from "../components/Beranda/BeritaSection.jsx";
 import FiturWebsite from "../components/Beranda/FiturWebsite";
 import MottoSection from "../components/Beranda/MottoSection";
 import LayananSurat from "../components/Beranda/LayananSurat";
+import KontakPenting from "../components/Beranda/KontakPenting.jsx";
 import BatasDesa from "../components/Profil/BatasDesa.jsx";
 
 import videoBerandaDesktop from "../assets/video/video beranda.mp4";
@@ -33,7 +34,8 @@ const Beranda = () => {
         <MottoSection />
         <BeritaSection />
         <LayananSurat />
-        {/* <BatasDesa /> */}
+        <BatasDesa />
+        <KontakPenting />
       </main>
     </>
   );

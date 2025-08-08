@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Impor gambar untuk setiap perangkat desa
 import gambarKades from "../../assets/img/perangkat-desa-placeholder.jpg";
 import gambarSekdes from "../../assets/img/perangkat-desa-placeholder.jpg";
 
@@ -20,12 +19,12 @@ const itemVariants = {
 
 const perangkatData = [
   {
-    nama: "Andrean Noviandi, S.kom.",
+    nama: "H. Ali Masyhar S.H",
     jabatan: "Kepala Desa",
     gambar: gambarKades,
   },
   {
-    nama: "Siti Aminah, S.Adm.",
+    nama: "M Shohib",
     jabatan: "Sekretaris Desa",
     gambar: gambarSekdes,
   },
@@ -53,7 +52,6 @@ const PerangkatDesaSection = () => {
         <motion.div
           className="flex justify-center flex-wrap gap-12"
           variants={containerVariants}
-          initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

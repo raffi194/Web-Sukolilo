@@ -10,6 +10,7 @@ import Footer from './components/footer.jsx';
 import Layanan from "./pages/Layanan.jsx";
 import PerangkatDesa from "./pages/PerangkatDesa.jsx";
 import PengaduanSaran from './pages/PengaduanSaran.jsx';
+import BeritaDetail from './pages/BeritaDetail';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,11 +18,12 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <PengaduanSaran />
+        {/* <PengaduanSaran /> */}
         <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Beranda />} />
+          <Route path="/berita/:id" element={<BeritaDetail />} />
           <Route path="/profil-desa" element={<Profil />} />
           <Route path="/Layanan" element={<Layanan />} />
           <Route path="/usaha-desa" element={<Usaha />} />
